@@ -6,17 +6,23 @@ import { environment } from '../../environment';
 import { MaterialModule } from './material/material.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CoreModuleModule } from './core-module/core-module.module';
-import { CompanySummaryComponent } from './company-summary/company-summary.component';
+import { CompaniesModule } from './companies/companies.module';
+import {  MatTableModule } from '@angular/material/table';
+
+
 
 
 @NgModule({
-  declarations: [AppComponent, CompanySummaryComponent],
+  declarations: [AppComponent],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     BrowserModule,
     MaterialModule,
     MatSlideToggleModule,
-    CoreModuleModule
+    CoreModuleModule,
+    CompaniesModule,
+    MatTableModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

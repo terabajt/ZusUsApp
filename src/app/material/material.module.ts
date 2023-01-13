@@ -15,6 +15,7 @@ import {
   MatSnackBarModule,
   MatToolbarModule,
   MatSlideToggleModule,
+  MatTableModule,
 } from '@angular/material';
 
 const MAT_SNACK_BAR_GLOBAL_CONFIG: MatSnackBarConfig = {
@@ -40,7 +41,8 @@ const MATERIAL_MODULES = [
   MatCheckboxModule,
   MatSelectModule,
   MatToolbarModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatTableModule
 ];
 
 @NgModule(
