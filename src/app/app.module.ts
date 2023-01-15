@@ -6,8 +6,9 @@ import { environment } from '../../environment';
 import { MaterialModule } from './material/material.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CoreModuleModule } from './core-module/core-module.module';
+import {MatTableModule} from '@angular/material/table';
 import { CompaniesModule } from './companies/companies.module';
-import {  MatTableModule } from '@angular/material/table';
+
 
 
 
@@ -20,9 +21,8 @@ import {  MatTableModule } from '@angular/material/table';
     MaterialModule,
     MatSlideToggleModule,
     CoreModuleModule,
-    CompaniesModule,
     MatTableModule,
-
+    CompaniesModule
   ],
   providers: [],
   bootstrap: [AppComponent],

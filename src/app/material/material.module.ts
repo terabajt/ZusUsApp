@@ -1,22 +1,17 @@
 import { NgModule } from '@angular/core';
-import {
-  MAT_DIALOG_DEFAULT_OPTIONS,
-  MAT_SNACK_BAR_DEFAULT_OPTIONS,
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatDialogConfig,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatSelectModule,
-  MatSnackBarConfig,
-  MatSnackBarModule,
-  MatToolbarModule,
-  MatSlideToggleModule,
-  MatTableModule,
-} from '@angular/material';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatDialogConfig} from '@angular/material/dialog';
+import {MatSnackBarModule,  MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig} from '@angular/material/snack-bar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
+
 
 const MAT_SNACK_BAR_GLOBAL_CONFIG: MatSnackBarConfig = {
   duration: 2500,
@@ -42,12 +37,11 @@ const MATERIAL_MODULES = [
   MatSelectModule,
   MatToolbarModule,
   MatSlideToggleModule,
-  MatTableModule
 ];
 
 @NgModule(
   {
-  exports: [...MATERIAL_MODULES],
+  exports: [...MATERIAL_MODULES ],
   declarations: [],
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: MAT_DIALOG_GLOBAL_CONFIG },

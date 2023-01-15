@@ -1,35 +1,9 @@
-<h2>Wygenerowane zestawienie:</h2>
-<table mat-table [dataSource]="dataSource" class="company-summary mat-elevation-z8">
+<table mat-table [dataSource]="EmpData" class="mat-elevation-z8">
+  <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+    <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
+  </ng-container>
 
-  <!-- <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>#</th>
-    <td mat-cell *matCellDef="let company_items">{{ company_items.id }}</td>
-  </ng-container>
-  <ng-container matColumnDef="company_name">
-    <th mat-header-cell *matHeaderCellDef>Company Name</th>
-    <td mat-cell *matCellDef="let company_items">{{ company_items.company_name}}</td>
-  </ng-container>
-  <ng-container matColumnDef="billing_month">
-    <th mat-header-cell *matHeaderCellDef>Billing Month</th>
-    <td mat-cell *matCellDef="let company_items">{{ company_items.billing_month}}</td>
-  </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let company_items;column:displayedColumns"></tr> -->
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> </td>
-  </ng-container>
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> </td>
-  </ng-container>
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> </td>
-  </ng-container>
-
-
-
-
+  <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
 </table>
