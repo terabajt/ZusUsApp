@@ -7,5 +7,6 @@ export interface Company_item {
   billing_date: string;
   billing_zus: number;
   billing_vat: number;
+  billing_us: number;
   billing_worker: number;
 }
