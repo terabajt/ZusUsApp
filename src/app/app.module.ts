@@ -5,9 +5,11 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../../environment';
 import { MaterialModule } from './material/material.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { CoreModuleModule } from './core-module/core-module.module';
 import {MatTableModule} from '@angular/material/table';
 import { CompaniesModule } from './companies/companies.module';
+import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -16,13 +18,15 @@ import { CompaniesModule } from './companies/companies.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     BrowserModule,
+    CoreModule,
     MaterialModule,
     MatSlideToggleModule,
-    CoreModuleModule,
     MatTableModule,
-    CompaniesModule
+    CompaniesModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],
