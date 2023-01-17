@@ -9,15 +9,19 @@ import { Company_item } from 'src/app/models/company-item';
 })
 export class CompaniesService {
 
-  private API_URL='/CompaniesSummary'
+  private API_URL_ITEM='/items'
+  private API_URL_COMPANIES='/companies'
   constructor(private db: AngularFireDatabase) { }
 
+  getItemInfo(): Observable<any[]> {
+    return this.db.list<any>(this.API_URL_ITEM).snapshotChanges().pipe(map(response => response.map((item: any) => this.assignKey(item))));
+  }
   getCompaniesInfo(): Observable<any[]> {
-    return this.db.list<any>(this.API_URL).snapshotChanges().pipe(map(response => response.map((CompaniesSummary: any) => this.assignKey(CompaniesSummary))));
+    return this.db.list<any>(this.API_URL_COMPANIES).snapshotChanges().pipe(map(response => response.map((item: any) => this.assignKey(item))));
   }
 
 
-  private assignKey(CompaniesSummary) {
-    return {...CompaniesSummary.payload.val(), key: CompaniesSummary.key }
+  private assignKey(item) {
+    return {...item.payload.val(), key: item.key }
   }
 }

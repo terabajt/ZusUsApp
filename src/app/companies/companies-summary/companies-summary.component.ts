@@ -103,6 +103,7 @@ export class CompaniesSummaryComponent implements OnInit {
 
   ngOnInit(): void {
     this.companiesService.getCompaniesInfo().subscribe(console.log);
+    this.companiesService.getItemInfo().subscribe(console.log);
   }
 
 }
