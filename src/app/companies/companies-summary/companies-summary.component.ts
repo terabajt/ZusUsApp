@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { of } from 'rxjs';
+import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company_item } from 'src/app/models/company-item';
 
 @Component({
@@ -98,9 +99,10 @@ export class CompaniesSummaryComponent implements OnInit {
   dataSource = this.company_items;
 
 
-  constructor() { }
+  constructor(private companiesService: CompaniesService) { }
 
   ngOnInit(): void {
+    this.companiesService.getCompaniesInfo().subscribe(console.log);
   }
 
 }
