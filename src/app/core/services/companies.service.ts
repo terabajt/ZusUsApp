@@ -21,6 +21,7 @@ export class CompaniesService {
     return this.db.list<Company>(this.API_URL_COMPANIES).snapshotChanges().pipe(map(response => response.map((item: any) => this.assignKey(item))));
   }
 
+  
 
   private assignKey(item) {
     return {...item.payload.val(), key: item.key }
