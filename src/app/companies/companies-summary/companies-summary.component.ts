@@ -16,44 +16,33 @@ export class CompaniesSummaryComponent implements OnInit{
 
 
   @ViewChild('paginator') paginator!: MatPaginator;
-  dataSource: (Company_item | Company)[];
+  // dataSource: (Company_item | Company)[];
 
 displayCompanyName() {
 
 }
 
-  displayedColumns: string[] = ['billing_date', 'billing_month', 'billing_us', 'billing_vat', 'billing_worker', 'billing_zus', 'company_name', 'key' ];
+  displayedColumns: string[] = ['billing_date', 'billing_month', 'billing_us', 'billing_vat', 'billing_worker', 'billing_zus', 'company_id', 'key' ];
 
 
  companyItems$: Observable<Company_item[]> = this.companiesService.getItemInfo();
- companyName$: Observable<Company[]> = this.companiesService.getCompaniesInfo();
+//  companyName$: Observable<Company[]> = this.companiesService.getCompaniesInfo();
 
- companiesInfo$ = merge(this.companyItems$, this.companyName$)
+//  companiesInfo$ = merge(this.companyItems$, this.companyName$)
 
 
-//  dataSource = this.companyItems$;
+ dataSource = this.companyItems$;
 
- company$: Observable<Company[]> = this.companiesService.getCompaniesInfo()
+//  company$: Observable<Company[]> = this.companiesService.getCompaniesInfo()
 
   constructor(private companiesService: CompaniesService) { }
 
+  getIdInfo$ = this.companiesService.getIdInfo("1").subscribe(res => console.log(res.company_name))
+
 
   ngOnInit() {
-    combineLatest(this.companyItems$, this.companyName$).pipe(
-      take(1),     // <-- remove it if the data stream needs to persist
-      map(reponse => [...reponse[0], ...reponse[1]])
-    ).subscribe(
-      reponse => {
-        this.dataSource = reponse;
-      }
-    )
+this.companiesService.getIdInfo("1").subscribe(res => console.log(res.company_name))
 
-
-
-    console.log("d")
-    this.companiesInfo$.subscribe(res =>
-      console.log(res)
-    )
   }
 
 

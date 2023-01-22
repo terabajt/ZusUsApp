@@ -15,13 +15,16 @@ export class CompaniesService {
   constructor(private db: AngularFireDatabase) { }
 
   getItemInfo(): Observable<Company_item[]> {
-    return this.db.list<Company_item>(this.API_URL_ITEM).snapshotChanges().pipe(map(response => response.map((item: any) => this.assignKey(item))));
+    return this.db.list<Company_item>(this.API_URL_ITEM).snapshotChanges().pipe(map(response => response.map((item) => this.assignKey(item))));
   }
   getCompaniesInfo(): Observable<Company[]> {
-    return this.db.list<Company>(this.API_URL_COMPANIES).snapshotChanges().pipe(map(response => response.map((item: any) => this.assignKey(item))));
+    return this.db.list<Company>(this.API_URL_COMPANIES).snapshotChanges().pipe(map(response => response.map((item) => this.assignKey(item))));
   }
 
-  
+  getIdInfo(id: string): Observable<Company> {
+    return this.getCompaniesInfo().pipe(map(res => res.find(re => re['key'] == id) ))
+  }
+
 
   private assignKey(item) {
     return {...item.payload.val(), key: item.key }
