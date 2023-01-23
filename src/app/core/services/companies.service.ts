@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { forkJoin, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, first, map } from 'rxjs/operators';
 import { Company } from 'src/app/models/company';
 import { Company_item } from 'src/app/models/company-item';
 
@@ -22,7 +22,7 @@ export class CompaniesService {
   }
 
   getIdInfo(id: string): Observable<Company> {
-    return this.getCompaniesInfo().pipe(map(res => res.find(re => re['key'] == id) ))
+    return this.getCompaniesInfo().pipe(map(res => res.find(re => re['key'] == id)))
   }
 
 getAll(): Observable<any> {
