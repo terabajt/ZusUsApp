@@ -4,6 +4,7 @@ import { combineLatest, forkJoin, map, merge, Observable, of, take } from 'rxjs'
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company } from 'src/app/models/company';
 import { Company_item } from 'src/app/models/company-item';
+import { CompaniesModule } from '../companies.module';
 
 @Component({
   selector: 'app-companies-summary',
@@ -25,7 +26,20 @@ export class CompaniesSummaryComponent implements OnInit{
 // }
 
 
- companyItems$: Observable<Company_item[]> = this.companiesService.getItemInfo().pipe();
+ companyItems$: Observable<Company_item[]> = this.companiesService.getItemInfo();
+
+
+//  companyItems$.subscribe(val => console.log(val))
+show = {
+next: value => console.log(value)
+};
+
+
+test$ = this.companiesService.getItemInfo().subscribe();
+
+
+
+ companyItems2$ = this.companyItems$.pipe().subscribe(this.show)
 //  companyName$: Observable<Company[]> = this.companiesService.getCompaniesInfo();
 
 //  companiesInfo$ = merge(this.companyItems$, this.companyName$)
@@ -51,23 +65,23 @@ title;
 
   ngOnInit() {
 
-    this.companiesService.getIdInfo("1").subscribe(
-      value => this.title = value,
-      error => console.log(error),
-    );
+    // this.companiesService.getIdInfo("1").subscribe(
+    //   value => this.title = value,
+    //   error => console.log(error),
+    // );
 
 
 
 
-console.log(this.title);
-    let id;
+// console.log(this.title);
+//     let id;
 
 
 // console.log(this.jest$);
 
-console.log(id)
+// console.log(id)
 
-console.log(this.getIdInfo$("1"))
+// console.log(this.getIdInfo$("1"))
 
 
 

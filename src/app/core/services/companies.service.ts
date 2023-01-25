@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { forkJoin, Observable } from 'rxjs';
-import { filter, first, map } from 'rxjs/operators';
+import { filter, first, map, take, tap } from 'rxjs/operators';
 import { Company } from 'src/app/models/company';
 import { Company_item } from 'src/app/models/company-item';
 
@@ -15,7 +15,9 @@ export class CompaniesService {
   constructor(private db: AngularFireDatabase) { }
 
   getItemInfo(): Observable<Company_item[]> {
-    return this.db.list<Company_item>(this.API_URL_ITEM).snapshotChanges().pipe(map(response => response.map((item) => this.assignKey(item))));
+    return this.db.list<Company_item>(this.API_URL_ITEM).snapshotChanges().pipe(
+      map(response => response.map((item) => this.assignKey(item))
+      ));
   }
   getCompaniesInfo(): Observable<Company[]> {
     return this.db.list<Company>(this.API_URL_COMPANIES).snapshotChanges().pipe(map(response => response.map((item) => this.assignKey(item))));
