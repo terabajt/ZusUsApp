@@ -27,7 +27,7 @@ export class CompaniesSummaryComponent implements OnInit{
 
 
  companyItems$: Observable<Company_item[]> = this.companiesService.getItemInfo();
-
+///czy to ten?
 
 //  companyItems$.subscribe(val => console.log(val))
 show = {
