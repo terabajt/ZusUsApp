@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { combineLatest, forkJoin, map, merge, Observable, of, take } from 'rxjs';
+import { combineLatest, forkJoin, map, merge, mergeMap, Observable, of, take } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company } from 'src/app/models/company';
 import { Company_item } from 'src/app/models/company-item';
@@ -17,43 +17,36 @@ export class CompaniesSummaryComponent implements OnInit{
 
 
   @ViewChild('paginator') paginator!: MatPaginator;
-  // dataSource: (Company_item | Company)[];
+
 
   displayedColumns: string[] = ['billing_date', 'billing_month', 'billing_us', 'billing_vat', 'billing_worker', 'billing_zus', 'company_id', 'key' ];
 
-// getCompanyById(id: number): Observable<Company>{
-
-// }
 
 
  companyItems$: Observable<Company_item[]> = this.companiesService.getItemInfo();
-///czy to ten?
 
-//  companyItems$.subscribe(val => console.log(val))
 show = {
-next: value => console.log(value)
+next: value => value.map(
+  value => {console.log(value),
+value.company_id = "terabajt"
+  })
+
 };
+
+
 
 
 test$ = this.companiesService.getItemInfo().subscribe();
 
 
-
- companyItems2$ = this.companyItems$.pipe().subscribe(this.show)
-//  companyName$: Observable<Company[]> = this.companiesService.getCompaniesInfo();
-
-//  companiesInfo$ = merge(this.companyItems$, this.companyName$)
-
-
-  companies$: Observable<any> = this.companiesService.getAll()
+ companyItems2$ = of(this.companyItems$.pipe().subscribe(this.show))
 
 
  dataSource = this.companyItems$;
 
-//  company$: Observable<Company[]> = this.companiesService.getCompaniesInfo()
+
 
   constructor(private companiesService: CompaniesService) { }
-
 
 
   getIdInfo$(id: string) {
@@ -61,31 +54,7 @@ test$ = this.companiesService.getItemInfo().subscribe();
       )
   }
 
-title;
-
   ngOnInit() {
-
-    // this.companiesService.getIdInfo("1").subscribe(
-    //   value => this.title = value,
-    //   error => console.log(error),
-    // );
-
-
-
-
-// console.log(this.title);
-//     let id;
-
-
-// console.log(this.jest$);
-
-// console.log(id)
-
-// console.log(this.getIdInfo$("1"))
-
-
-
-// console.log(this.getIdInfo$("1"))
 
   }
 
