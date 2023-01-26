@@ -17,7 +17,7 @@ export class CompaniesService {
   getItemInfo(): Observable<any[]> {
     return this.db.list<Company_item>(this.API_URL_ITEM).snapshotChanges().pipe(
       map(response => response.map((item) => this.assignKey(item))),
-        map(res => res.map(item => ({...item, name: "BB"}))));
+        map(res => res.map(item => ({...item, company: this.getIdInfo$("1")}))));
   }
 
 
@@ -28,11 +28,10 @@ export class CompaniesService {
   getIdInfo(id: string): Observable<Company> {
     return this.getCompaniesInfo().pipe(map(res => res.find(re => re['key'] == id)))
   }
-
-getAll(): Observable<any> {
-return forkJoin([this.db.list<Company_item>(this.API_URL_ITEM).snapshotChanges(), this.db.list<Company>(this.API_URL_COMPANIES).snapshotChanges()])
-
-}
+  getIdInfo$(id: string) {
+    return  this.getIdInfo(id).subscribe(event => event = event
+      )
+  }
 
 
   private assignKey(item) {

@@ -49,10 +49,7 @@ test$ = this.companiesService.getItemInfo().subscribe();
   constructor(private companiesService: CompaniesService) { }
 
 
-  getIdInfo$(id: string) {
-    return  this.companiesService.getIdInfo(id).subscribe(event => event = event
-      )
-  }
+
 
   ngOnInit() {
 
