@@ -19,7 +19,7 @@ export class CompaniesSummaryComponent implements OnInit{
   @ViewChild('paginator') paginator!: MatPaginator;
 
 
-  displayedColumns: string[] = ['billing_date', 'billing_month', 'billing_us', 'billing_vat', 'billing_worker', 'billing_zus', 'company_id', 'key' ];
+  displayedColumns: string[] = ['billing_date', 'billing_month', 'billing_us', 'billing_vat', 'billing_worker', 'billing_zus', 'company_id', 'key', 'company' ];
 
 
 
