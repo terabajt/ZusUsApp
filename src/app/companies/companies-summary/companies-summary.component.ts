@@ -25,22 +25,23 @@ export class CompaniesSummaryComponent implements OnInit{
 
  companyItems$: Observable<Company_item[]> = this.companiesService.getItemsInfos();
 
-show = {
-next: value => value.map(
-  value => {console.log(value)
-  })
+// show = {
+// next: value => value.map(
+//   value => {console.log(value)
+//   })
 
-};
+// };
 
 
  dataSource = this.companyItems$;
 
 
   constructor(private companiesService: CompaniesService) { }
-  show$ = this.companiesService.getIdInfo$("1")
+  // show$ = this.companiesService.getIdInfo$("1")
 
   ngOnInit() {
-    this.show$.subscribe(res => console.log(res.company_name))
+    // this.show$.subscribe(res => res.company_name)
+    this.companyItems$.subscribe(res => console.log(res))
   }
 
 
