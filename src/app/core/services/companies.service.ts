@@ -16,28 +16,21 @@ export class CompaniesService {
   flush: string;
   constructor(private db: AngularFireDatabase) { }
 
-  getItemInfo(): Observable<any[]> {
+  getItemsInfos(): Observable<any[]> {
     return this.db.list<Company_item>(this.API_URL_ITEM).snapshotChanges().pipe(
       map(response => response.map((item) => this.assignKey(item))),
-        map(res => res.map(name => ({...name, company: this.getIdInfo("1").pipe(
-          map( res => res.company_name),
-          take(1)
-        ).subscribe(value => value)}))));
+        map(res => res.map(name => ({...name, company: this.getIdInfo$("1").pipe(
+          map( res => res.company_name)
+        )}))));
   }
 
 
-  getCompaniesInfo(): Observable<Company[]> {
+  getCompaniesInfos(): Observable<Company[]> {
     return this.db.list<Company>(this.API_URL_COMPANIES).snapshotChanges().pipe(map(response => response.map((item) => this.assignKey(item))));
   }
 
-  getIdInfo(id: string): Observable<Company> {
-    return this.getCompaniesInfo().pipe(map(res => res.find(re => re['key'] == id), take(1)))
-  }
-  getIdInfo$(id: string) {
-    return  this.getIdInfo(id).subscribe(event => {
-      this.flush = event.company_name.toString();
-      return flush.length })
-
+  getIdInfo$(id: string): Observable<Company> {
+    return this.getCompaniesInfos().pipe(map(res => res.find(res => res['key'] == id)))
   }
 
 
