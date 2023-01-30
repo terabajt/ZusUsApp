@@ -5,6 +5,11 @@ import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company } from 'src/app/models/company';
 import { Company_item } from 'src/app/models/company-item';
 import { CompaniesModule } from '../companies.module';
+import { HttpClient } from '@angular/common/http';
+import {throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
+
+
 
 @Component({
   selector: 'app-companies-summary',
@@ -24,6 +29,8 @@ export class CompaniesSummaryComponent implements OnInit{
 
 
  companyItems$: Observable<Company_item[]> = this.companiesService.getItemsInfos();
+ companyData$: Observable<Company[]> = this.companiesService.getCompaniesInfos();
+ get$: Observable<Company> = this.companiesService.getIdInfo("1")
 
 // show = {
 // next: value => value.map(
@@ -42,6 +49,9 @@ export class CompaniesSummaryComponent implements OnInit{
   ngOnInit() {
     // this.show$.subscribe(res => res.company_name)
     this.companyItems$.subscribe(res => console.log(res))
+    this.companyData$.subscribe(res => console.log(res))
+    this.get$.subscribe(res => console.log(res.company_name))
+
   }
 
 
