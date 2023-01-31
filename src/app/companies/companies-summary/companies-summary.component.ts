@@ -44,16 +44,26 @@ export class CompaniesSummaryComponent implements OnInit{
  dataSource = this.companyItems$;
   getData: string;
 
+  dataTest$ = this.companiesService.getItemsInfos().pipe(map(res => res));
+
+
+ getCompanyName(id) {
+  let data$ = this.companiesService.getId(id);
+  return data$.pipe(map(res => res.company_name))
+
+ }
+
+test2$ = this.getCompanyName(1)
 
   constructor(private companiesService: CompaniesService) { }
   // show$ = this.companiesService.getIdInfo$("1")
 
   ngOnInit() {
 
-    this.companyItems$.subscribe(res => console.log(res))
-    this.companyData$.subscribe(res => console.log(res))
+    // this.companyItems$.subscribe(res => console.log(res))
+    // this.companyData$.subscribe(res => console.log(res))
 
-    console.log(this.companiesService.getIdInfo("1"))
+    // console.log(this.companiesService.getIdInfo("1"))
 
 
   }

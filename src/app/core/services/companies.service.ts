@@ -20,13 +20,16 @@ export class CompaniesService {
   getItemsInfos(): Observable<any[]> {
     return this.db.list<Company_item>(this.API_URL_ITEM).snapshotChanges().pipe(
       map(response => response.map((item) => this.assignKey(item))),
-        map(res => res.map(name => ({...name, company: this.getIdInfo("1")
+        map(res => res.map(name => ({...name, company: this.getId("1")
         }))));
   }
+
+
 
   getCompaniesInfos(): Observable<Company[]> {
     return this.db.list<Company>(this.API_URL_COMPANIES).snapshotChanges().pipe(map(response => response.map((item) => this.assignKey(item))));
   }
+
 
   getIdInfo(id: string): string {
     let companyName: string = "Start";
@@ -36,8 +39,10 @@ export class CompaniesService {
   }
 
 
+
+
   getId(id): Observable<any> {
-    return this.db.list<Company>(this.API_URL_COMPANIES).snapshotChanges().pipe(map(res => res.filter(res =>  res.key === id)));
+    return  this.getCompaniesInfos().pipe(map(res => res.find(res => {return res['key'] == id})));
   }
 
 
