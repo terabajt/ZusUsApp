@@ -30,7 +30,6 @@ export class CompaniesSummaryComponent implements OnInit{
 
  companyItems$: Observable<Company_item[]> = this.companiesService.getItemsInfos();
  companyData$: Observable<Company[]> = this.companiesService.getCompaniesInfos();
- get$: Observable<Company> = this.companiesService.getIdInfo("1")
 
 // show = {
 // next: value => value.map(
@@ -40,17 +39,22 @@ export class CompaniesSummaryComponent implements OnInit{
 // };
 
 
+
+
  dataSource = this.companyItems$;
+  getData: string;
 
 
   constructor(private companiesService: CompaniesService) { }
   // show$ = this.companiesService.getIdInfo$("1")
 
   ngOnInit() {
-    // this.show$.subscribe(res => res.company_name)
+
     this.companyItems$.subscribe(res => console.log(res))
     this.companyData$.subscribe(res => console.log(res))
-    this.get$.subscribe(res => console.log(res.company_name))
+
+    console.log(this.companiesService.getIdInfo("1"))
+
 
   }
 
