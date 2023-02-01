@@ -21,6 +21,7 @@ export class CompaniesSummaryComponent implements OnInit{
   @Input() company: Company;
 
 
+
   @ViewChild('paginator') paginator!: MatPaginator;
 
 
@@ -52,8 +53,9 @@ export class CompaniesSummaryComponent implements OnInit{
   return data$.pipe(map(res => res.company_name))
 
  }
+id = 1;
+test2$ = this.getCompanyName(this.id)
 
-test2$ = this.getCompanyName(1)
 
   constructor(private companiesService: CompaniesService) { }
   // show$ = this.companiesService.getIdInfo$("1")
