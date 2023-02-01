@@ -50,11 +50,13 @@ export class CompaniesSummaryComponent implements OnInit{
 
  getCompanyName(id) {
   let data$ = this.companiesService.getId(id);
-  return data$.pipe(map(res => res.company_name))
+  this.id = id;
+  return data$.pipe(map(res => res.company_name));
 
  }
-id = 1;
-test2$ = this.getCompanyName(this.id)
+
+id = 3;
+// test2$ = this.getCompanyName(this.id)
 
 
   constructor(private companiesService: CompaniesService) { }

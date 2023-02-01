@@ -41,7 +41,7 @@
     </ng-container>
     <ng-container matColumnDef="company_id">
       <th mat-header-cell *matHeaderCellDef>ID FIRMY</th>
-      <td mat-cell *matCellDef="let item" [(id)]>{{ item.company_id }}
+      <td mat-cell *matCellDef="let item">{{ item.company_id }}
       </td>
     </ng-container>
     <ng-container matColumnDef="key">
@@ -49,10 +49,11 @@
       <td mat-cell *matCellDef="let item">{{ item.key}}</td>
     </ng-container>
     <ng-container matColumnDef="company">
-      <th mat-header-cell *matHeaderCellDef>Nazwa Firmy</th>
-      <td mat-cell *matCellDef="let item">{{ item.company + (test2$ | async) }}</td>
+      <th mat-header-cell *matHeaderCellDef>Nazwa Firmy </th>
+      <td mat-cell *matCellDef="let item" [(id)]="item.company_id">{{ item.company + ( getCompanyName(1) |
+        async) }}</td>
     </ng-container>
-
+    <!-- + (test2$ | async)  -->
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let itemrow; columns: displayedColumns"></tr>
