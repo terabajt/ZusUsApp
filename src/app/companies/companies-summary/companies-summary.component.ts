@@ -1,13 +1,11 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { combineLatest, forkJoin, map, merge, mergeMap, Observable, of, take } from 'rxjs';
+import { combineLatest, forkJoin, map, merge, mergeMap, Observable, of, find } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company } from 'src/app/models/company';
 import { Company_item } from 'src/app/models/company-item';
-import { CompaniesModule } from '../companies.module';
-import { HttpClient } from '@angular/common/http';
-import {throwError} from 'rxjs';
-import {catchError} from 'rxjs/operators';
+
+
 
 
 
@@ -25,50 +23,37 @@ export class CompaniesSummaryComponent implements OnInit{
   @ViewChild('paginator') paginator!: MatPaginator;
 
 
-  displayedColumns: string[] = ['billing_date', 'billing_month', 'billing_us', 'billing_vat', 'billing_worker', 'billing_zus', 'company_id', 'key', 'company' ];
+  displayedColumns: string[] = ['billing_date', 'billing_month', 'billing_us', 'billing_vat', 'billing_worker', 'billing_zus', 'key', 'company' ];
 
 
 
  companyItems$: Observable<Company_item[]> = this.companiesService.getItemsInfos();
- companyData$: Observable<Company[]> = this.companiesService.getCompaniesInfos();
-
-// show = {
-// next: value => value.map(
-//   value => {console.log(value)
-//   })
-
-// };
-
-
-
-
- dataSource = this.companyItems$;
-  getData: string;
-
-  dataTest$ = this.companiesService.getItemsInfos().pipe(map(res => res));
-
-
- getCompanyName(id) {
-  let data$ = this.companiesService.getId(id);
-  this.id = id;
-  return data$.pipe(map(res => res.company_name));
-
- }
-
-id = 3;
-// test2$ = this.getCompanyName(this.id)
+ companiesData$: Observable<Company[]> = this.companiesService.getCompaniesInfos();
 
 
   constructor(private companiesService: CompaniesService) { }
-  // show$ = this.companiesService.getIdInfo$("1")
+
+
+// NEW SOLUTION
+items$ = combineLatest({
+  companyItems: this.companyItems$,
+  companiesData: this.companiesData$
+}).pipe(
+  map(({
+    companyItems, companiesData
+  }) => {
+    return companyItems.map( companyItem => ({
+      companyItem: companyItem,
+      companyData: companiesData.find(companyData => companyData.company_id === companyItem.company_id)
+    }));
+  })
+);
+
+dataSource = this.items$;
 
   ngOnInit() {
 
-    // this.companyItems$.subscribe(res => console.log(res))
-    // this.companyData$.subscribe(res => console.log(res))
-
-    // console.log(this.companiesService.getIdInfo("1"))
-
+    this.items$.subscribe(res => console.log(res))
 
   }
 

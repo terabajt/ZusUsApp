@@ -7,5 +7,6 @@ export interface Company {
   company_tax_us_no: string;
   company_tax_zus_no: string;
   key: string;
+  company_id: string;
   }
 
