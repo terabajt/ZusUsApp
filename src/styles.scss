@@ -1,10 +1,7 @@
 /* Importing Bootstrap SCSS file. */
-@import '../node_modules/bootstrap/scss/bootstrap';
-@import '../node_modules/bootstrap/scss/variables';
-@import '../node_modules/bootstrap/scss/mixins';
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
 .toast-success {
   background: #0fdb00;
 }
