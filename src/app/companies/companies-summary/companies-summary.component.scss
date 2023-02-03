@@ -1,4 +1,12 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
+}
+
+#new-flight-btn {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  font-size: 30px;
+  // border-radius: 25px;
 }

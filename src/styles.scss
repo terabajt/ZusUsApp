@@ -1,5 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import '../node_modules/bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/mixins';
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+.toast-success {
+  background: #0fdb00;
+}
+
+.toast-error {
+  background: #ff0900;
+}
+
+.mat-form-field {
+  width: 100% !important;
+}
+
+.mat-dialog-content {
+  overflow-x: hidden !important;
+}
+
+body {
+  background: #e9ebee;
+}
+
+.material-icons {
+  font-family: 'Material Icons' !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

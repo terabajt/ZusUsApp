@@ -5,17 +5,14 @@ import { AppComponent } from './app.component';
 import { environment } from '../../environment';
 import { MaterialModule } from './material/material.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { CompaniesModule } from './companies/companies.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AngularFireModule} from '@angular/fire/compat'
+import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-
-
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,9 +26,10 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
     MatTableModule,
     CompaniesModule,
     NgbModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
