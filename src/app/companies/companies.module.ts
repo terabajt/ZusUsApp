@@ -7,11 +7,13 @@ import { NewCompanyItemComponent } from './new-company-item/new-company-item.com
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { NewCompanyItemFormComponent } from './new-company-item-form/new-company-item-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
-  declarations: [CompaniesSummaryComponent, CompaniesTableComponent, NewCompanyItemComponent],
+  declarations: [CompaniesSummaryComponent, CompaniesTableComponent, NewCompanyItemComponent, NewCompanyItemFormComponent],
   exports: [CompaniesSummaryComponent],
-  imports: [CommonModule, MatTableModule, MatIconModule, MatDialogModule, MatButtonModule],
+  imports: [CommonModule, MatTableModule, MatIconModule, MatDialogModule, MatButtonModule, MatFormFieldModule],
   entryComponents: [NewCompanyItemComponent]
 })
 export class CompaniesModule {}

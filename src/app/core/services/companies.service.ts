@@ -16,7 +16,7 @@ export class CompaniesService {
 
   constructor(private db: AngularFireDatabase) {}
 
-  getItemsInfos(): Observable<any[]> {
+  getItemsInfos(): Observable<Company_item[]> {
     return this.db
       .list<Company_item>(this.API_URL_ITEM)
       .snapshotChanges()
