@@ -1,51 +1,63 @@
-<form>
-  <div class="row">
+<form [formGroup]="form">
+  <div class=" row">
     <div class="col-sm-8">
       <mat-form-field>
-        <input matInput placeholder="Nazwa Firmy">
+        <mat-select formControlName="companyName" placeholder="Nazwa Firmy">
+          <mat-option *ngFor="let x of (companiesData$ | async)" [value]="x.company_name">{{ x.company_name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>Data wpisu</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="billingDate">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field>
+        <mat-select formControlName="billingMonth" placeholder="Miesiąc rozliczenia">
+          <mat-option *ngFor="let x of month" [value]="x.value">{{ x.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input matInput formControlName="billingUs" placeholder="Podatek - Urząd Skarbowy">
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input matInput formControlName="billingVat" placeholder="Podatek - VAT">
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput placeholder="Data wpisu">
+        <input matInput formControlName="billingWorker" placeholder="Podatek - Pracownik">
       </mat-form-field>
     </div>
-  </div>
-  <div class="row">
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput placeholder="Miesiąc rozliczenia">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <mat-form-field>
-        <input matInput placeholder="Podatek - Urząd Skarbowy">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <mat-form-field>
-        <input matInput placeholder="Podatek - VAT">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <mat-form-field>
-        <input matInput placeholder="Podatek - Pracownik">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <mat-form-field>
-        <input matInput placeholder="Składka ZUS">
+        <input matInput formControlName="billingZus" placeholder="Składka ZUS">
       </mat-form-field>
     </div>
   </div>
 </form>
+<pre>
+  {{ form.value | json }}
+</pre>
