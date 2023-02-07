@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { CompaniesSummaryComponent } from './companies-summary/companies-summary.component';
 import { MatTableModule } from '@angular/material/table';
 import { CompaniesTableComponent } from './companies-summary/companies-table/companies-table.component';
@@ -32,6 +32,6 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     MatNativeDateModule
   ],
   entryComponents: [NewCompanyItemComponent],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }]
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }, DatePipe]
 })
 export class CompaniesModule {}

@@ -3,7 +3,7 @@
     <div class="col-sm-8">
       <mat-form-field>
         <mat-select formControlName="company_id" placeholder="Nazwa Firmy">
-          <mat-option *ngFor="let x of (companiesData$ | async)" [value]="x.company_name">{{ x.company_name }}
+          <mat-option *ngFor="let x of (companiesData$ | async)" [value]="x.company_id">{{ x.company_name }}
           </mat-option>
         </mat-select>
         <mat-error>Pole jest wymagane</mat-error>
@@ -13,11 +13,13 @@
   <div class="row">
     <div class="col-sm-4">
       <mat-form-field appearance="fill">
-        <mat-label>Data wpisu</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="billing_date">
+        <!-- <mat-label>Data wpisu</mat-label>
+        <input matInput [matDatepicker]="billing_date" type="text">
         <mat-hint>DD/MM/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker-toggle matIconSuffix [for]="billing_date"></mat-datepicker-toggle>
+        <mat-datepicker #billing_date></mat-datepicker>
+        <mat-error>Pole jest wymagane</mat-error> -->
+        <input matInput formControlName="billing_date" placeholder="Data wprowadzenia" type="text">
         <mat-error>Pole jest wymagane</mat-error>
       </mat-form-field>
     </div>
@@ -34,14 +36,14 @@
   <div class="row">
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput formControlName="billing_us" placeholder="Podatek - Urząd Skarbowy">
+        <input matInput formControlName="billing_us" placeholder="Podatek Dochodowy" type="number">
         <mat-error *ngIf="form.get('billing_us').hasError('required')">Pole jest wymagane</mat-error>
         <mat-error *ngIf="form.get('billing_us').hasError('pattern')">Wymagane są cyfry</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput formControlName="billing_vat" placeholder="Podatek - VAT">
+        <input matInput formControlName="billing_vat" placeholder="Podatek VAT" type="number">
         <mat-error *ngIf="form.get('billing_vat').hasError('required')">Pole jest wymagane</mat-error>
         <mat-error *ngIf="form.get('billing_vat').hasError('pattern')">Wymagane są cyfry</mat-error>
       </mat-form-field>
@@ -50,7 +52,7 @@
   <div class="row">
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput formControlName="billing_worker" placeholder="Podatek - Pracownik">
+        <input matInput formControlName="billing_worker" placeholder="Podatek Dochodowy od pracownika" type="number">
         <mat-error *ngIf="form.get('billing_worker').hasError('required')">Pole jest wymagane</mat-error>
         <mat-error *ngIf="form.get('billing_worker').hasError('pattern')">Wymagane są cyfry</mat-error>
 
@@ -58,7 +60,7 @@
     </div>
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput formControlName="billing_zus" placeholder="Składka ZUS">
+        <input matInput formControlName="billing_zus" placeholder="Składka ZUS" type="number">
         <mat-error *ngIf="form.get('billing_zus').hasError('required')">Pole jest wymagane</mat-error>
         <mat-error *ngIf="form.get('billing_zus').hasError('pattern')">Wymagane są cyfry</mat-error>
 
@@ -66,6 +68,6 @@
     </div>
   </div>
 </form>
-<pre>
+<!-- <pre>
   {{ form.value | json }}
-</pre>
+</pre> -->

@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -11,8 +12,9 @@ import { Company } from 'src/app/models/company';
 })
 export class NewCompanyItemFormComponent implements OnInit {
   form: FormGroup;
+  // myDate: string;
 
-  constructor(private formBuilder: FormBuilder, private companiesService: CompaniesService) {}
+  constructor(private formBuilder: FormBuilder, private companiesService: CompaniesService, private datePipe: DatePipe) {}
 
   month = [
     { label: 'Styczeń', value: 'Styczeń' },
@@ -33,15 +35,19 @@ export class NewCompanyItemFormComponent implements OnInit {
     this.buildForm();
   }
 
+  date = new Date();
+
+  currentDate = this.datePipe.transform(this.date, 'dd.MM.yyy');
+
   private buildForm() {
     this.form = this.formBuilder.group({
-      company_id: ['1', { validators: [Validators.required] }],
-      billing_date: ['data', { validators: [Validators.required] }],
+      billing_date: [this.currentDate, { validators: [Validators.required] }],
       billing_month: ['', { validators: [Validators.required] }],
       billing_us: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
       billing_vat: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
       billing_worker: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
-      billing_zus: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }]
+      billing_zus: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
+      company_id: ''
     });
   }
 
