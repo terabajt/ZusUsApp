@@ -13,6 +13,7 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [CompaniesSummaryComponent, CompaniesTableComponent, NewCompanyItemComponent, NewCompanyItemFormComponent],
@@ -30,6 +31,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  entryComponents: [NewCompanyItemComponent]
+  entryComponents: [NewCompanyItemComponent],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }]
 })
 export class CompaniesModule {}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -7,5 +7,6 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./new-company-item.component.scss']
 })
 export class NewCompanyItemComponent {
+  @ViewChild('itemForm') itemForm: NewCompanyItemComponent;
   constructor(private dialogRef: MatDialogRef<NewCompanyItemComponent>) {}
 }

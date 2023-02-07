@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company } from 'src/app/models/company';
@@ -35,13 +35,13 @@ export class NewCompanyItemFormComponent implements OnInit {
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      companyName: this.formBuilder.array,
-      billingDate: '',
-      billingMonth: '',
-      billingUs: '',
-      billingVat: '',
-      billingWorker: '',
-      billingZus: ''
+      companyName: ['', { validators: [Validators.required] }],
+      billingDate: ['', { validators: [Validators.required] }],
+      billingMonth: ['', { validators: [Validators.required] }],
+      billingUs: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
+      billingVat: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
+      billingWorker: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
+      billingZus: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }]
     });
   }
 
