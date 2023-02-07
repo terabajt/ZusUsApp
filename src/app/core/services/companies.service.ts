@@ -30,6 +30,10 @@ export class CompaniesService {
       .pipe(map(response => response.map(item => this.assignKey(item))));
   }
 
+  addItemInfo(itemInfo: Company_item) {
+    return this.db.list<Company_item>(this.API_URL_ITEM).push(itemInfo);
+  }
+
   private assignKey(item) {
     return { ...item.payload.val(), key: item.key };
   }

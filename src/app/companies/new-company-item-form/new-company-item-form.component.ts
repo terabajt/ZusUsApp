@@ -35,13 +35,13 @@ export class NewCompanyItemFormComponent implements OnInit {
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      companyName: ['', { validators: [Validators.required] }],
-      billingDate: ['', { validators: [Validators.required] }],
-      billingMonth: ['', { validators: [Validators.required] }],
-      billingUs: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
-      billingVat: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
-      billingWorker: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
-      billingZus: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }]
+      company_id: ['1', { validators: [Validators.required] }],
+      billing_date: ['data', { validators: [Validators.required] }],
+      billing_month: ['', { validators: [Validators.required] }],
+      billing_us: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
+      billing_vat: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
+      billing_worker: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
+      billing_zus: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }]
     });
   }
 
