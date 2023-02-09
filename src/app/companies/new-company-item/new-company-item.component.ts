@@ -1,6 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CompaniesService } from 'src/app/core/services/companies.service';
+import { Company_item } from 'src/app/models/company-item';
 
 @Component({
   selector: 'app-new-company-item',
@@ -9,9 +12,13 @@ import { CompaniesService } from 'src/app/core/services/companies.service';
 })
 export class NewCompanyItemComponent {
   @ViewChild('itemForm') itemForm: NewCompanyItemComponent;
-  form: any;
+  form: FormGroup;
 
-  constructor(private companiesService: CompaniesService, private dialogRef: MatDialogRef<NewCompanyItemComponent>) {}
+  constructor(
+    private companiesService: CompaniesService,
+    private dialogRef: MatDialogRef<NewCompanyItemComponent>,
+    private toast: MatSnackBar
+  ) {}
 
   createCompanyItem() {
     console.log(this.itemForm);
@@ -20,9 +27,10 @@ export class NewCompanyItemComponent {
 
   private onCreatiingSuccess() {
     this.dialogRef.close();
+    this.toast.open('Wpis został dodany', '', { panelClass: 'toast-success' });
   }
 
-  private onCreatingFailure() {
-    console.log('some error');
+  private onCreatingFailure(error) {
+    this.toast.open(error.message, '', { panelClass: 'toast-error' });
   }
 }

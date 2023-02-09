@@ -1,9 +1,11 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company } from 'src/app/models/company';
+import { Company_item } from 'src/app/models/company-item';
 
 @Component({
   selector: 'app-new-company-item-form',
@@ -11,8 +13,7 @@ import { Company } from 'src/app/models/company';
   styleUrls: ['./new-company-item-form.component.scss']
 })
 export class NewCompanyItemFormComponent implements OnInit {
-  form: FormGroup;
-  // myDate: string;
+  form: any;
 
   constructor(private formBuilder: FormBuilder, private companiesService: CompaniesService, private datePipe: DatePipe) {}
 
@@ -52,4 +53,10 @@ export class NewCompanyItemFormComponent implements OnInit {
   }
 
   companiesData$: Observable<Company[]> = this.companiesService.getCompaniesInfos();
+
+  setCompanyItem(newCompanyItem: Company_item) {
+    const { key, ...formData } = newCompanyItem;
+    this.form.patchValue(formData);
+    console.log(formData);
+  }
 }

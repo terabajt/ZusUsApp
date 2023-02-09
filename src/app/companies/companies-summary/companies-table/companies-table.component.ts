@@ -4,6 +4,8 @@ import { Company } from 'src/app/models/company';
 import { Company_item } from 'src/app/models/company-item';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { MatPaginator } from '@angular/material/paginator';
+import { ItemDetailsComponent } from '../../item-details/item-details.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-companies-table',
@@ -13,19 +15,21 @@ import { MatPaginator } from '@angular/material/paginator';
 export class CompaniesTableComponent implements OnInit {
   @Input() company_item: Company_item;
   @Input() company: Company;
+  @Input() companyItem: Company_item;
+  item: any;
 
-  constructor(private companiesService: CompaniesService) {}
+  constructor(private companiesService: CompaniesService, private dialog: MatDialog) {}
 
   @ViewChild('paginator') paginator!: MatPaginator;
 
   displayedColumns: string[] = [
+    'LP',
     'billing_date',
     'billing_month',
     'billing_us',
     'billing_vat',
     'billing_worker',
     'billing_zus',
-    'key',
     'company'
   ];
 
@@ -46,6 +50,10 @@ export class CompaniesTableComponent implements OnInit {
   );
 
   dataSource = this.items$;
+
+  showDetails(companyItem) {
+    this.dialog.open(ItemDetailsComponent, { data: companyItem.companyItem });
+  }
 
   ngOnInit(): void {}
 }

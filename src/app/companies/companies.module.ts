@@ -14,9 +14,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { ItemDetailsComponent } from './item-details/item-details.component';
+import { EditCompanyItemComponent } from './edit-company-item/edit-company-item.component';
 
 @NgModule({
-  declarations: [CompaniesSummaryComponent, CompaniesTableComponent, NewCompanyItemComponent, NewCompanyItemFormComponent],
+  declarations: [
+    CompaniesSummaryComponent,
+    CompaniesTableComponent,
+    NewCompanyItemComponent,
+    NewCompanyItemFormComponent,
+    ItemDetailsComponent,
+    EditCompanyItemComponent
+  ],
   exports: [CompaniesSummaryComponent],
   imports: [
     CommonModule,
@@ -31,7 +40,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  entryComponents: [NewCompanyItemComponent],
+  entryComponents: [NewCompanyItemComponent, ItemDetailsComponent],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }, DatePipe]
 })
 export class CompaniesModule {}

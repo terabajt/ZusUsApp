@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col">
+    <h3>
+      Szczegóły wpisu
+      <mat-icon class="float-end" (click)="close()">close</mat-icon>
+    </h3>
+    <p class="label">Data dodania: {{ (companyItem.billing_date )}} </p>
+    <p class="label">Miesiąc: {{ companyItem.billing_us }} </p>
+    <p class="label">Podatek Dochodowy: {{ companyItem.billing_us }} zł</p>
+    <p class="label">Podatek Vat: {{ companyItem.billing_vat }} zł</p>
+    <p class="label">Podatek Dochodowy od PRACOWNIKA: {{ companyItem.billing_worker}} zł</p>
+    <p class="label">Składka ZUS: {{ companyItem.billing_zus }} zł</p>
+    <button mat-raised-button color="primary" class="float-end" (click)="goToEditItemDetails()">Edytuj wpis</button>
+  </div>
+</div>
