@@ -54,8 +54,7 @@ export class NewCompanyItemFormComponent implements OnInit {
   companiesData$: Observable<Company[]> = this.companiesService.getCompaniesInfos();
 
   setCompanyItem(item: Company_item) {
-    // const { key, ...formData } = item;
-    // this.form.patchValue(formData);
-    console.log(item.billing_date);
+    const { key, ...formData } = item;
+    this.form?.patchValue(formData);
   }
 }

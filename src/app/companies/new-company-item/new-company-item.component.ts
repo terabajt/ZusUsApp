@@ -33,9 +33,4 @@ export class NewCompanyItemComponent {
   private onCreatingFailure(error) {
     this.toast.open(error.message, '', { panelClass: 'toast-error' });
   }
-
-  setCompanyItem(item: Company_item) {
-    const { key, ...formData } = item;
-    this.form.patchValue(formData);
-  }
 }
