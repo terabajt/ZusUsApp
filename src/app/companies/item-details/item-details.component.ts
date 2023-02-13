@@ -2,7 +2,6 @@ import { Component, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Company_item } from 'src/app/models/company-item';
-import { CompaniesTableComponent } from '../companies-summary/companies-table/companies-table.component';
 
 @Component({
   selector: 'app-item-details',

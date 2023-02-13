@@ -2,14 +2,15 @@
   <div class="col-9">
     <h3>Edycja wpisu <strong>{{ item?.key }}</strong></h3>
   </div>
+  <div class="col-3">
+    <mat-icon (click)="removeItem()" id="remove-btn">delete_forever</mat-icon>
+  </div>
 </div>
 <app-new-company-item-form #newCompanyItemForm [editMode]="true"> </app-new-company-item-form>
 <div class="row">
   <div class="col text-end">
     <button mat-raised-button>RESET</button>
-    <button mat-raised-button color="primary">ZAPISZ</button>
+    <button mat-raised-button color="primary" (click)="saveEditItem()">ZAPISZ</button>
   </div>
-  <pre>
-    {{ item | json }}
-  </pre>
+
 </div>

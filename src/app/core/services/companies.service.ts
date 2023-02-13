@@ -15,13 +15,15 @@ export class CompaniesService {
   flush: string;
 
   constructor(private db: AngularFireDatabase) {}
-
+  //Get Items Infos to display item list
   getItemsInfos(): Observable<Company_item[]> {
     return this.db
       .list<Company_item>(this.API_URL_ITEM)
       .snapshotChanges()
       .pipe(map(response => response.map(item => this.assignKey(item))));
   }
+
+  //Get Companies Infos  to display item list
 
   getCompaniesInfos(): Observable<Company[]> {
     return this.db
@@ -30,6 +32,7 @@ export class CompaniesService {
       .pipe(map(response => response.map(item => this.assignKey(item))));
   }
 
+  //Get Item to form to edit
   getCompanyItem(key: string): Observable<Company_item> {
     return this.db
       .object<Company_item>(`${this.API_URL_ITEM}/${key}`)
@@ -37,11 +40,22 @@ export class CompaniesService {
       .pipe(map(item => this.assignKey(item)));
   }
 
+  //Push data item of edit form to server
+  saveEditFlight(key: string, item: Company_item) {
+    return this.db.object<Company_item>(`${this.API_URL_ITEM}/${key}`).update(item);
+  }
+  //Push data item to server
+
   addItemInfo(itemInfo: Company_item) {
     return this.db.list<Company_item>(this.API_URL_ITEM).push(itemInfo);
   }
 
+  //Add databases id key to data
   private assignKey(item) {
     return { ...item.payload.val(), key: item.key };
+  }
+  //Remove item from database
+  removeItem(key: string) {
+    return this.db.object(`${this.API_URL_ITEM}/${key}`).remove();
   }
 }
