@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
@@ -13,6 +13,7 @@ import { Company_item } from 'src/app/models/company-item';
 })
 export class NewCompanyItemFormComponent implements OnInit {
   form: FormGroup;
+  @Input() editMode = false;
 
   constructor(private formBuilder: FormBuilder, private companiesService: CompaniesService, private datePipe: DatePipe) {}
 
@@ -31,8 +32,14 @@ export class NewCompanyItemFormComponent implements OnInit {
     { label: 'Grudzień', value: 'Grudzień' }
   ];
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.buildForm();
+  }
+
+  setCompanyItem(item: Company_item) {
+    const { key, ...formData } = item;
+    this.form.patchValue(formData);
+    console.log('Poszło?');
   }
 
   date = new Date();
@@ -52,9 +59,4 @@ export class NewCompanyItemFormComponent implements OnInit {
   }
 
   companiesData$: Observable<Company[]> = this.companiesService.getCompaniesInfos();
-
-  setCompanyItem(item: Company_item) {
-    const { key, ...formData } = item;
-    this.form?.patchValue(formData);
-  }
 }

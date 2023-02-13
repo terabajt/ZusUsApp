@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company_item } from 'src/app/models/company-item';
 import { NewCompanyItemFormComponent } from '../new-company-item-form/new-company-item-form.component';
-import { NewCompanyItemComponent } from '../new-company-item/new-company-item.component';
 
 @Component({
   selector: 'app-edit-company-item',
@@ -16,7 +15,7 @@ export class EditCompanyItemComponent {
 
   item: Company_item;
 
-  constructor(private route: ActivatedRoute, private companiesService: CompaniesService) {}
+  constructor(private route: ActivatedRoute, private companiesService: CompaniesService, private router: Router) {}
 
   ngAfterViewInit() {
     this.loadItem();

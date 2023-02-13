@@ -30,11 +30,11 @@ export class CompaniesService {
       .pipe(map(response => response.map(item => this.assignKey(item))));
   }
 
-  getCompanyItem(key: any): Observable<Company_item> {
+  getCompanyItem(key: string): Observable<Company_item> {
     return this.db
       .object<Company_item>(`${this.API_URL_ITEM}/${key}`)
       .snapshotChanges()
-      .pipe(map(companiesInfo => this.assignKey(companiesInfo)));
+      .pipe(map(item => this.assignKey(item)));
   }
 
   addItemInfo(itemInfo: Company_item) {
