@@ -6,7 +6,6 @@ import { environment } from '../../environment';
 import { MaterialModule } from './material/material.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
-import { CompaniesModule } from './companies/companies.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -25,7 +24,6 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     MaterialModule,
     MatSlideToggleModule,
     MatTableModule,
-    CompaniesModule,
     NgbModule,
     AngularFireDatabaseModule,
     BrowserAnimationsModule,

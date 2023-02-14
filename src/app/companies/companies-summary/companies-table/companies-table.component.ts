@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 import { combineLatest, map, Observable } from 'rxjs';
 import { Company } from 'src/app/models/company';
 import { Company_item } from 'src/app/models/company-item';
@@ -10,9 +10,10 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-companies-table',
   templateUrl: './companies-table.component.html',
-  styleUrls: ['./companies-table.component.scss']
+  styleUrls: ['./companies-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CompaniesTableComponent implements OnInit {
+export class CompaniesTableComponent {
   @Input() company_item: Company_item;
   @Input() company: Company;
   @Input() companyItem: Company_item;
@@ -54,6 +55,4 @@ export class CompaniesTableComponent implements OnInit {
   showDetails(companyItem) {
     this.dialog.open(ItemDetailsComponent, { data: companyItem.companyItem });
   }
-
-  ngOnInit(): void {}
 }

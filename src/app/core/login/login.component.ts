@@ -22,4 +22,7 @@ export class LoginComponent {
       .then(user => this.router.navigate(['/dashboard']))
       .catch(error => this.toast.open(error.message));
   }
+  register() {
+    this.authService.register(this.credentials).catch(error => this.toast.open(error.message));
+  }
 }
