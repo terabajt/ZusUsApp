@@ -17,6 +17,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { EditCompanyItemComponent } from './edit-company-item/edit-company-item.component';
 import { CompaniesRoutingModule } from './companies-routing.module';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CompaniesRoutingModule } from './companies-routing.module';
     NewCompanyItemComponent,
     NewCompanyItemFormComponent,
     ItemDetailsComponent,
-    EditCompanyItemComponent
+    EditCompanyItemComponent,
+    SpinnerComponent
   ],
   exports: [CompaniesSummaryComponent],
   imports: [
