@@ -63,4 +63,13 @@ export class EditCompanyItemComponent {
       .pipe(tap(item => this.newCompanyItemForm?.setCompanyItem(item)))
       .subscribe(item => (this.item = item));
   }
+
+  //Close form
+  formClose() {
+    this.router.navigate(['/dashboard']);
+  }
+  //Reset form to original state
+  formReset() {
+    this.loadItem();
+  }
 }

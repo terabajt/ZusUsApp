@@ -45,7 +45,18 @@
       <th mat-header-cell *matHeaderCellDef>Nazwa Firmy </th>
       <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.companyData.company_name }}</td>
     </ng-container>
-    <!-- + (test2$ | async)  -->
+
+    <ng-container matColumnDef="contex_menu">
+      <th mat-header-cell *matHeaderCellDef>Szybka akcja </th>
+      <td mat-cell *matCellDef="let item">
+        <mat-icon (click)="removeItem(item.companyItem.key)" id="remove-btn" label="Usuń">delete_forever</mat-icon>
+        <mat-icon (click)="showDetails(item)" id="edit-btn" label="Edytuj">settings</mat-icon>
+        <mat-icon (click)="showDetails(item)" id="print-btn" label="Drukuj">print</mat-icon>
+        <mat-icon (click)="showDetails(item)" id="send-btn" label="Wyślij na maila">mail</mat-icon>
+
+      </td>
+
+    </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let itemrow; columns: displayedColumns"></tr>

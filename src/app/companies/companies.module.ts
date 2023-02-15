@@ -18,7 +18,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 import { EditCompanyItemComponent } from './edit-company-item/edit-company-item.component';
 import { CompaniesRoutingModule } from './companies-routing.module';
 import { SpinnerComponent } from './spinner/spinner.component';
-import { SpinnerComponent } from '../core/spinner/spinner.component';
+
 import { CoreModule } from '../core/core.module';
 
 @NgModule({
