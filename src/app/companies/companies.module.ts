@@ -17,6 +17,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { EditCompanyItemComponent } from './edit-company-item/edit-company-item.component';
 import { CompaniesRoutingModule } from './companies-routing.module';
+import { SpinnerComponent } from '../core/spinner/spinner.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { CompaniesRoutingModule } from './companies-routing.module';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    CompaniesRoutingModule
+    CompaniesRoutingModule,
+    CoreModule
   ],
   entryComponents: [NewCompanyItemComponent, ItemDetailsComponent],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }, DatePipe]
