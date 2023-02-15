@@ -20,6 +20,7 @@ import { CompaniesRoutingModule } from './companies-routing.module';
 import { SpinnerComponent } from './spinner/spinner.component';
 
 import { CoreModule } from '../core/core.module';
+import { PdfCreateComponent } from './pdf-create/pdf-create.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CoreModule } from '../core/core.module';
     NewCompanyItemFormComponent,
     ItemDetailsComponent,
     EditCompanyItemComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PdfCreateComponent
   ],
   exports: [CompaniesSummaryComponent],
   imports: [
