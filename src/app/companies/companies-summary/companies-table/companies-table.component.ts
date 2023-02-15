@@ -6,7 +6,7 @@ import { CompaniesService } from 'src/app/core/services/companies.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { ItemDetailsComponent } from '../../item-details/item-details.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-companies-table',
@@ -23,8 +23,6 @@ export class CompaniesTableComponent {
   constructor(private companiesService: CompaniesService, private dialog: MatDialog, private router: Router) {}
 
   @ViewChild('paginator') paginator!: MatPaginator;
-
-  isLoading: boolean = false;
 
   displayedColumns: string[] = [
     'LP',
@@ -57,17 +55,5 @@ export class CompaniesTableComponent {
 
   showDetails(companyItem) {
     this.dialog.open(ItemDetailsComponent, { data: companyItem.companyItem });
-  }
-
-  ngOnInit() {
-    this.router.events.subscribe((routerEvent: Event) => this.checkRouterEvent(routerEvent));
-  }
-
-  private checkRouterEvent(routerEvent: Event) {
-    if (routerEvent instanceof NavigationStart) {
-      this.isLoading = true;
-    } else if (routerEvent instanceof NavigationEnd || routerEvent instanceof NavigationCancel || routerEvent instanceof NavigationError) {
-      this.isLoading = false;
-    }
   }
 }
