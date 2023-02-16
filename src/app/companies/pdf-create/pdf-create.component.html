@@ -7,3 +7,5 @@
 <div class="col-md-4 text-right">
   <button class="btn btn-success btn-block" (click)="onConfirm()">Download PDF</button>
 </div>
+<pre>{{ (getItemToPrint | async)| json}} </pre>
+<pre>{{ (items$ | async)| json}} </pre>
