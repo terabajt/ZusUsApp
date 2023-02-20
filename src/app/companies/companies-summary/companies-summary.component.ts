@@ -14,7 +14,7 @@ export class CompaniesSummaryComponent {
   @Input() company_item: Company_item;
   @Input() company: Company;
 
-  constructor(private dialog: MatDialog, private router: Router) {}
+  constructor(private dialog: MatDialog) {}
 
   openNewCompanyItemModal() {
     this.dialog.open(NewCompanyItemComponent);

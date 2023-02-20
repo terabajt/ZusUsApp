@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company_item } from 'src/app/models/company-item';
+import { NewDataCompanyFormComponent } from '../new-data-company-form/new-data-company-form.component';
 
 @Component({
   selector: 'app-new-company-item',
@@ -11,7 +12,7 @@ import { Company_item } from 'src/app/models/company-item';
   styleUrls: ['./new-company-item.component.scss']
 })
 export class NewCompanyItemComponent {
-  @ViewChild('itemForm') itemForm: NewCompanyItemComponent;
+  @ViewChild('itemForm') itemForm: NewDataCompanyFormComponent;
   form: FormGroup;
 
   constructor(
@@ -21,7 +22,6 @@ export class NewCompanyItemComponent {
   ) {}
 
   createCompanyItem() {
-    console.log(this.itemForm);
     this.companiesService.addItemInfo(this.itemForm.form.value).then(this.onCreatiingSuccess.bind(this), this.onCreatingFailure.bind(this));
   }
 

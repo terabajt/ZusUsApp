@@ -50,6 +50,10 @@ export class CompaniesService {
     return this.db.list<Company_item>(this.API_URL_ITEM).push(itemInfo);
   }
 
+  addDetailInfo(comapny: Company) {
+    return this.db.list<Company>(this.API_URL_COMPANIES).push(comapny);
+  }
+
   //Add databases id key to data
   private assignKey(item) {
     return { ...item.payload.val(), key: item.key };

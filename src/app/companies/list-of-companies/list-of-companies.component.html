@@ -1,0 +1,66 @@
+<div class="container">
+  <h2>Wygenerowane zestawienia:</h2>
+  <table class="table" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+    <ng-container matColumnDef="LP">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>L.p. </th>
+      <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+    </ng-container>
+    <ng-container matColumnDef="company_name">
+      <th mat-header-cell *matHeaderCellDef>Nazwa firmy </th>
+      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.company_name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="company_country">
+      <th mat-header-cell *matHeaderCellDef>Miasto: </th>
+      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.company_country }}</td>
+    </ng-container>
+    <ng-container matColumnDef="company_email">
+      <th mat-header-cell *matHeaderCellDef>Adres e-mail: </th>
+      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.company_email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="company_post_code">
+      <th mat-header-cell *matHeaderCellDef>Kod pocztowy: </th>
+      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.company_post_code }}</td>
+    </ng-container>
+    <ng-container matColumnDef="company_street">
+      <th mat-header-cell *matHeaderCellDef>Ulica: </th>
+      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.company_street }}</td>
+    </ng-container>
+    <ng-container matColumnDef="company_tax_us_no">
+      <th mat-header-cell *matHeaderCellDef>Numer konta Urząd Skarbowy </th>
+      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.company_tax_us_no }}</td>
+    </ng-container>
+    <ng-container matColumnDef="company_tax_zus_no">
+      <th mat-header-cell *matHeaderCellDef>Numer konta ZUS </th>
+      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.company_tax_zus_no }}</td>
+    </ng-container>
+    <ng-container matColumnDef="key">
+      <th mat-header-cell *matHeaderCellDef>Klucz: </th>
+      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.key }}</td>
+    </ng-container>
+    <ng-container matColumnDef="company_id">
+      <th mat-header-cell *matHeaderCellDef>Numer id: </th>
+      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.company_id }}</td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="contex_menu">
+      <th mat-header-cell *matHeaderCellDef>Szybka akcja </th>
+      <td mat-cell *matCellDef="let item">
+        <mat-icon (click)="removeItem(item.companyItem.key)" id="remove-btn" label="Usuń">delete_forever</mat-icon>
+        <mat-icon (click)="showDetails(item)" id="edit-btn" label="Edytuj">settings</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let itemrow; columns: displayedColumns"></tr>
+  </table>
+
+  <button (click)="openNewCompanyDataModal()" mat-mini-fab color="accent" id="new-item-btn">+</button>
+  <app-spinner></app-spinner>
+
+</div>

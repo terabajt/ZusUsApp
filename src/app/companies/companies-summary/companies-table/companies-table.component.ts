@@ -98,4 +98,8 @@ export class CompaniesTableComponent {
   //     .pipe(tap(item => this.newCompanyItemForm?.setCompanyItem(item)))
   //     .subscribe(item => (this.item = item));
   // }
+
+  sendMail(mail: string, subject: string, body: string) {
+    window.open(`mailto:${mail}?subject=${subject}&body=${body}`);
+  }
 }

@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Dodaj nowy wpis:</h2>
 <mat-dialog-content>
-  <NewDataCompanyFormComponent #itemForm></NewDataCompanyFormComponent>
+  <app-new-data-company-form #itemForm></app-new-data-company-form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
@@ -8,7 +8,7 @@
     <div class="col">
       <button mat-raised-button mat-dialog-close>Anuluj</button>
       <button mat-raised-button color="primary" [disabled]="itemForm.form.invalid"
-        (click)="createCompanyItem()">Dodaj</button>
+        (click)="createCompanyDetail()">Dodaj</button>
     </div>
   </div>
 

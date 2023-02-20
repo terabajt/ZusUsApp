@@ -21,6 +21,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
 
 import { CoreModule } from '../core/core.module';
 import { PdfCreateComponent } from './pdf-create/pdf-create.component';
+import { NewCompanyDetailsComponent } from './new-company-details/new-company-details.component';
+import { ListOfCompaniesComponent } from './list-of-companies/list-of-companies.component';
+import { NewDataCompanyFormComponent } from './new-data-company-form/new-data-company-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { PdfCreateComponent } from './pdf-create/pdf-create.component';
     ItemDetailsComponent,
     EditCompanyItemComponent,
     SpinnerComponent,
-    PdfCreateComponent
+    PdfCreateComponent,
+    NewCompanyDetailsComponent,
+    ListOfCompaniesComponent,
+    NewDataCompanyFormComponent
   ],
   exports: [CompaniesSummaryComponent],
   imports: [

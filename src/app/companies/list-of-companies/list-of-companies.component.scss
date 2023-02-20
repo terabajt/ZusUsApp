@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+#remove-btn,
+#edit-btn,
+#print-btn,
+#send-btn {
+  color: red;
+  cursor: pointer;
+  font-size: 26px;
+  margin-left: 4px;
+}
+
+#edit-btn {
+  color: green;
+}
+#print-btn {
+  color: grey;
+}
+#send-btn {
+  color: blue;
+}
