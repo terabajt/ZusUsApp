@@ -6,7 +6,7 @@ import { PdfCreateComponent } from './pdf-create/pdf-create.component';
 
 const routes: Routes = [
   { path: '', component: CompaniesSummaryComponent },
-  { path: 'print', component: PdfCreateComponent },
+  { path: 'print/:key', component: PdfCreateComponent },
   { path: ':key', component: EditCompanyItemComponent }
 ];
 

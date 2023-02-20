@@ -67,6 +67,12 @@ export class CompaniesTableComponent {
     this.dialog.open(ItemDetailsComponent, { data: companyItem.companyItem });
   }
 
+  //Print item to pdf
+  printItem(key: string) {
+    this.router.navigate(['/dashboard/CompaniesSummary/print', key]);
+    // this.router.navigate(['/dashboard/CompaniesSummary/print']);
+  }
+
   //Remove item from top menu
 
   removeItem(key: string) {

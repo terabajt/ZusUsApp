@@ -10,6 +10,7 @@ export class AuthService {
   private userData;
 
   readonly authState$ = this.fireAuth.authState;
+  // readonly authState$ = true;
 
   constructor(private fireAuth: AngularFireAuth) {}
   login(credentials: Credentials) {

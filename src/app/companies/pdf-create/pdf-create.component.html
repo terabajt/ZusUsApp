@@ -1,3 +1,5 @@
+<script src="/assets/FreeSans-normal.js"></script>
+
 <div class=" page" id="htmlData">
   <table class="table table-bordered">
     <tr class="table-primary" *ngFor="let item of (items2$ |async)">
@@ -15,11 +17,8 @@
       <h2 class="text-center">ZUS:</h2>
       <p class="text-center">Numer konta do przelewu: {{ item.companyData.company_tax_zus_no }}</p>
       <p class="text-center">Zaliczka na ZUS: {{ item.companyItem.billing_zus}} zł</p>
-
   </table>
 </div>
-<div class="col-md-4 text-right">
-  <button class="btn btn-success btn-block" (click)="onConfirm()">Download PDF</button>
+<div class="col-md-4 text-end">
+  <button class="btn btn-success btn-block" (click)="pdfCreate()">Drukuj</button>
 </div>
-
-<pre>{{ (items2$ | async)| json}} </pre>
