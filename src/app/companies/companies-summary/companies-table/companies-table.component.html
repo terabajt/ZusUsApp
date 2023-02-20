@@ -35,7 +35,8 @@
     </ng-container>
     <ng-container matColumnDef="billing_worker">
       <th mat-header-cell *matHeaderCellDef>Pracownik</th>
-      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.companyItem.billing_worker + ' zł' }}</td>
+      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.companyItem.billing_worker + ' zł' +
+        item.companyItem.key }}</td>
     </ng-container>
     <!-- <ng-container matColumnDef="key">
       <th mat-header-cell *matHeaderCellDef>Klucz wpisu</th>

@@ -1,11 +1,14 @@
 import { Component, Input } from '@angular/core';
 import jsPDF from 'jspdf';
+import customfonts from 'src/assets/customfonts';
+import vfs_fonts from 'src/assets/vfs_fonts';
 import html2canvas from 'html2canvas';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { combineLatest, find, map, Observable, tap } from 'rxjs';
 import { Company_item } from 'src/app/models/company-item';
 import { Company } from 'src/app/models/company';
 import { ActivatedRoute, Route } from '@angular/router';
+import { FreeSans } from '../pdf-create/FreeSans-normal';
 
 @Component({
   selector: 'app-pdf-create',
@@ -16,6 +19,8 @@ export class PdfCreateComponent {
   constructor(private comapniesService: CompaniesService, private route: ActivatedRoute) {}
   @Input() company_item: Company_item;
   @Input() company: Company;
+  @Input() freeSans: FreeSans;
+  @Input() getVfs: vfs_fonts;
 
   //Get data to show on print page
   companyItems$: Observable<Company_item[]> = this.comapniesService.getItemsInfos();
@@ -34,12 +39,10 @@ export class PdfCreateComponent {
     })
   );
 
-  items2$: any = this.items$;
-
-  getItemToPrint;
+  items2$: any;
 
   getItem(key: string) {
-    this.getItemToPrint = this.items$.subscribe(res => res.find(res => key === res.companyItem.key));
+    this.items2$ = this.items$.pipe(map(res => res.filter(res => res.companyItem.key === key)));
   }
 
   ngAfterViewInit() {
@@ -53,11 +56,25 @@ export class PdfCreateComponent {
     this.exportAllToPDF(pages);
   }
 
+  const = require('pdfkit');
+  blobStream = require('blob-stream');
+
   exportAllToPDF(pages: HTMLElement) {
     const doc = new jsPDF('p', 'px', 'a4');
 
     doc.html(pages, {
       callback: (doc: jsPDF) => {
+        // doc.addFont('Helvetica', 'Helvetica', 'normal', 'Identity-H');
+        // doc.setFont('Courier');
+        // doc.addFileToVFS('FreeSans.ttf', 'base64enc');
+        // doc.addFont('FreeSans.ttf', 'custom', 'normal');
+        // doc.setFont('custom');
+        // doc.setFont('freeSans', 'normal');
+        // doc.setFontType('normal');
+        // doc.setFontSize(12);
+        // console.log(doc.getFontList());
+        doc.addFont('Abha.ttf', 'Abha', 'normal', 'Identity-H');
+        doc.setFont('Abha'); // set font
         doc.save('pdf-export');
       }
     });

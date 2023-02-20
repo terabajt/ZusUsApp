@@ -28,6 +28,8 @@
     "firebase": "9.9.1",
     "jspdf": "^2.5.1",
     "material-design-icons": "~3.0.1",
+    "pdfkit": "^0.13.0",
+    "pspdfkit": "^2023.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

@@ -1,22 +1,30 @@
 .page {
-  // width: 21cm;
+  width: 400px;
   // min-height: 29.7cm;
-  // padding: 2cm;
-  // margin: 1cm auto;
+  padding: 2px;
+  margin: 9px;
   // border: 1px #d3d3d3 solid;
-  // border-radius: 5px;
-  // background: white;
-  // box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  size: A4;
-  font-size: 4px !important;
+  border-radius: 2px;
+  background: white;
+  // box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  // size: A4;
+  // font-size: 2px !important;
 }
 
-.subpage {
-  padding: 1cm;
-  border: 5px red solid;
-  height: 256mm;
-  outline: 2cm #ffeaea solid;
+h1,
+h2 {
+  font-size: 11px;
 }
+
+p {
+  font-size: 10px;
+}
+// .subpage {
+//   padding: 1cm;
+//   border: 5px red solid;
+//   height: 256mm;
+//   outline: 2cm #ffeaea solid;
+// }
 
 @page {
   size: A4;
