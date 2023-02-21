@@ -10,7 +10,7 @@ import { NewDataCompanyFormComponent } from '../new-data-company-form/new-data-c
   styleUrls: ['./new-company-details.component.scss']
 })
 export class NewCompanyDetailsComponent implements OnInit {
-  @ViewChild('itemForm') itemForm: NewDataCompanyFormComponent;
+  @ViewChild('itemForm') itemForm: NewCompanyDetailsComponent;
   form: FormGroup;
 
   constructor(private companiesService: CompaniesService, private dialogRef: MatDialogRef<NewCompanyDetailsComponent>) {}

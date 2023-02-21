@@ -9,14 +9,14 @@
   </div>
   <div class="row">
     <div class="col-sm-4">
-      <mat-form-field appearance="fill">
-        <input matInput formControlName="company_email" placeholder="Adres e-mail:" type="text">
+      <mat-form-field>
+        <input matInput formControlName="company_email" placeholder="Adres e-mail:">
         <mat-error>Pole jest wymagane</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm-4">
-      <mat-form-field appearance="fill">
-        <input matInput formControlName="company_country" placeholder="Miejscowość:" type="text">
+      <mat-form-field>
+        <input matInput formControlName="company_country" placeholder="Miejscowość:">
         <mat-error>Pole jest wymagane</mat-error>
       </mat-form-field>
     </div>
@@ -25,33 +25,28 @@
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="company_post_code" placeholder="Kod pocztowy" type="text">
-        <mat-error *ngIf="form.get('company_post_code').hasError('required')">Pole jest wymagane</mat-error>
-        <mat-error *ngIf="form.get('company_post_code').hasError('pattern')">Wymagane są cyfry</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="company_street" placeholder="Ulica:" type="text">
-        <mat-error *ngIf="form.get('billing_vat').hasError('required')">Pole jest wymagane</mat-error>
-        <mat-error *ngIf="form.get('billing_vat').hasError('pattern')">Wymagane są cyfry</mat-error>
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput formControlName="company_tax_us_no" placeholder="Numer konta Urząd Skarbowy" type="number">
-        <mat-error *ngIf="form.get('company_tax_us_no').hasError('required')">Pole jest wymagane</mat-error>
-        <mat-error *ngIf="form.get('company_tax_us_no').hasError('pattern')">Wymagane są cyfry</mat-error>
-
+        <input matInput formControlName="company_tax_us_no" placeholder="Numer konta Urząd Skarbowy" type="text">
       </mat-form-field>
     </div>
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="company_tax_zus_no" placeholder="Numer konta ZUS" type="text">
-        <mat-error *ngIf="form.get('company_tax_zus_no').hasError('required')">Pole jest wymagane</mat-error>
-        <mat-error *ngIf="form.get('company_tax_zus_no').hasError('pattern')">Wymagane są cyfry</mat-error>
-
+      </mat-form-field>
+    </div>
+    <div class="col-sm-2">
+      <mat-form-field>
+        <input matInput formControlName="company_id" placeholder="Numer ID" type="text">
       </mat-form-field>
     </div>
   </div>

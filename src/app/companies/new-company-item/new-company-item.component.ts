@@ -3,7 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CompaniesService } from 'src/app/core/services/companies.service';
-import { Company_item } from 'src/app/models/company-item';
 
 @Component({
   selector: 'app-new-company-item',

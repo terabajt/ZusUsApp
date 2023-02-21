@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { DataSource } from '@angular/cdk/collections';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company } from 'src/app/models/company';
 import { NewCompanyDetailsComponent } from '../new-company-details/new-company-details.component';
@@ -14,6 +15,7 @@ import { NewCompanyDetailsComponent } from '../new-company-details/new-company-d
 })
 export class ListOfCompaniesComponent {
   @Input() company: Company;
+  lp: any;
 
   constructor(private comapniesService: CompaniesService, private router: Router, private toast: MatSnackBar, private dialog: MatDialog) {}
 
@@ -62,5 +64,26 @@ export class ListOfCompaniesComponent {
 
   openNewCompanyDataModal() {
     this.dialog.open(NewCompanyDetailsComponent);
+  }
+
+  test3;
+
+  test = this.dataSource.forEach(res => {
+    console.log('Wartość to:' + res.length);
+    const length1 = res.length;
+    this.test3 = res.length;
+    this.obs$.subscribe(res => {
+      length1;
+    });
+  });
+
+  obs$ = new Observable();
+  obs = this.obs$.subscribe();
+
+  ngOnInit() {
+    console.log('Wartość 2: ' + this.obs);
+  }
+  ngAfterViewInit() {
+    console.log('Koloejny:' + this.test3);
   }
 }
