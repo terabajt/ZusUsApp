@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CompaniesService } from 'src/app/core/services/companies.service';
+import { NewDataCompanyFormComponent } from '../new-data-company-form/new-data-company-form.component';
 
 @Component({
   selector: 'app-new-company-details',
@@ -9,7 +10,7 @@ import { CompaniesService } from 'src/app/core/services/companies.service';
   styleUrls: ['./new-company-details.component.scss']
 })
 export class NewCompanyDetailsComponent implements OnInit {
-  @ViewChild('itemForm') itemForm: NewCompanyDetailsComponent;
+  @ViewChild('itemForm') itemForm: NewDataCompanyFormComponent;
   form: FormGroup;
 
   constructor(private companiesService: CompaniesService, private dialogRef: MatDialogRef<NewCompanyDetailsComponent>) {}
