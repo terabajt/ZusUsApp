@@ -18,6 +18,9 @@ export class NewDataCompanyFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
+    console.log('po init' + this.id2);
+    console.log('po init' + this.id2[2]);
+    console.log('mam długość po init' + this.id2.length);
   }
 
   id$ = this.comapniesService.getCompaniesInfos().pipe(
@@ -29,8 +32,9 @@ export class NewDataCompanyFormComponent implements OnInit {
     )
   );
 
+  id2 = [];
   id = this.id$.subscribe(res => {
-    return res.length;
+    return this.id2.push(res);
   });
 
   private buildForm() {
@@ -42,7 +46,13 @@ export class NewDataCompanyFormComponent implements OnInit {
       company_street: ['', { validators: [Validators.required] }],
       company_tax_us_no: ['', { validators: [Validators.required] }],
       company_tax_zus_no: ['', { validators: [Validators.required] }],
-      company_id: this.id
+      company_id: this.id2.length
     });
+  }
+
+  ngAfterViewInit() {
+    console.log('po init' + this.id2);
+    console.log('po init' + this.id2[2]);
+    console.log('mam długość po init' + this.id2.length);
   }
 }
