@@ -15,7 +15,6 @@ import { NewCompanyDetailsComponent } from '../new-company-details/new-company-d
 })
 export class ListOfCompaniesComponent {
   @Input() company: Company;
-  lp: any;
 
   constructor(private comapniesService: CompaniesService, private router: Router, private toast: MatSnackBar, private dialog: MatDialog) {}
 
@@ -66,24 +65,6 @@ export class ListOfCompaniesComponent {
     this.dialog.open(NewCompanyDetailsComponent);
   }
 
-  test3;
-
-  test = this.dataSource.forEach(res => {
-    console.log('Wartość to:' + res.length);
-    const length1 = res.length;
-    this.test3 = res.length;
-    this.obs$.subscribe(res => {
-      length1;
-    });
-  });
-
-  obs$ = new Observable();
-  obs = this.obs$.subscribe();
-
-  ngOnInit() {
-    console.log('Wartość 2: ' + this.obs);
-  }
-  ngAfterViewInit() {
-    console.log('Koloejny:' + this.test3);
-  }
+  tr = document.getElementsByTagName('tr');
+  id = this.tr.length + 1;
 }

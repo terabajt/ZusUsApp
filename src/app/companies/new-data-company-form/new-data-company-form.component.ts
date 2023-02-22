@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { last, map, mergeAll } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { ListOfCompaniesComponent } from '../list-of-companies/list-of-companies.component';
 import { NewCompanyDetailsComponent } from '../new-company-details/new-company-details.component';
@@ -11,13 +12,26 @@ import { NewCompanyDetailsComponent } from '../new-company-details/new-company-d
 })
 export class NewDataCompanyFormComponent implements OnInit {
   @ViewChild('itemForm') itemForm: NewCompanyDetailsComponent;
-  @ViewChild('lp') lp: ListOfCompaniesComponent;
+  // @ViewChild('id') id: ListOfCompaniesComponent;
   form: FormGroup;
   constructor(private formBuilder: FormBuilder, private comapniesService: CompaniesService) {}
 
   ngOnInit(): void {
     this.buildForm();
   }
+
+  id$ = this.comapniesService.getCompaniesInfos().pipe(
+    map(res =>
+      res.map(res => {
+        return res.company_id;
+        mergeAll();
+      })
+    )
+  );
+
+  id = this.id$.subscribe(res => {
+    return res.length;
+  });
 
   private buildForm() {
     this.form = this.formBuilder.group({
@@ -28,7 +42,7 @@ export class NewDataCompanyFormComponent implements OnInit {
       company_street: ['', { validators: [Validators.required] }],
       company_tax_us_no: ['', { validators: [Validators.required] }],
       company_tax_zus_no: ['', { validators: [Validators.required] }],
-      company_id: ''
+      company_id: this.id
     });
   }
 }
