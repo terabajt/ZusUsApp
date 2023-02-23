@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { last, map, mergeAll } from 'rxjs';
+import { count, firstValueFrom, last, lastValueFrom, map, mergeAll, tap } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { ListOfCompaniesComponent } from '../list-of-companies/list-of-companies.component';
 import { NewCompanyDetailsComponent } from '../new-company-details/new-company-details.component';
@@ -18,9 +18,16 @@ export class NewDataCompanyFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-    console.log('po init' + this.id2);
-    console.log('po init' + this.id2[2]);
-    console.log('mam długość po init' + this.id2.length);
+  }
+
+  getID() {
+    let value;
+    this.id$.subscribe(res => (value = res));
+    console.log('Wartosc' + value);
+    const result = this.id$.pipe(tap(res => res));
+
+    console.log(result);
+    return value;
   }
 
   id$ = this.comapniesService.getCompaniesInfos().pipe(
@@ -32,11 +39,6 @@ export class NewDataCompanyFormComponent implements OnInit {
     )
   );
 
-  id2 = [];
-  id = this.id$.subscribe(res => {
-    return this.id2.push(res);
-  });
-
   private buildForm() {
     this.form = this.formBuilder.group({
       company_name: ['', { validators: [Validators.required] }],
@@ -46,13 +48,7 @@ export class NewDataCompanyFormComponent implements OnInit {
       company_street: ['', { validators: [Validators.required] }],
       company_tax_us_no: ['', { validators: [Validators.required] }],
       company_tax_zus_no: ['', { validators: [Validators.required] }],
-      company_id: this.id2.length
+      company_id: this.getID()
     });
-  }
-
-  ngAfterViewInit() {
-    console.log('po init' + this.id2);
-    console.log('po init' + this.id2[2]);
-    console.log('mam długość po init' + this.id2.length);
   }
 }

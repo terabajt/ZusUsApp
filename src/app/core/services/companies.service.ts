@@ -32,6 +32,12 @@ export class CompaniesService {
       .pipe(map(response => response.map(item => this.assignKey(item))));
   }
 
+  // async getLastItem(): Promise<any> {
+  //   const collectionRef = this.db.list<Company>(this.API_URL_COMPANIES).collection('companies');
+  //   const snapshot = await collectionRef.count().get();
+  //   console.log(snapshot.data().count);
+  // }
+
   //Get Item to form to edit
   getCompanyItem(key: string): Observable<Company_item> {
     return this.db
