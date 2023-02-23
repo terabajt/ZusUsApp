@@ -18,23 +18,31 @@ export class NewDataCompanyFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
+    this.getID();
+    console.log(' w on init', this.getID());
   }
 
-  getID() {
-    let value;
-    this.id$.subscribe(res => (value = res));
-    console.log('Wartosc' + value);
-    const result = this.id$.pipe(tap(res => res));
+  // getID(): number {
+  //   let val: number;
+  //   this.id$.subscribe(res => (val = res.length));
+  //   return val;
+  // }
 
-    console.log(result);
-    return value;
+  getID(): number {
+    let val: number;
+    this.id$.subscribe(res => {
+      console.log('Wartość kolejna id', res); // (1) Dostaję kolejne wartości - 1, 2, 3, 4;
+      console.log('Numer id końcowy:', res.length); // (2) Dostaję długość 4 (tej wartości potrzebuję)
+      val = res.length; // (3) przekazuję tą wartość do zmiennej val
+    });
+    console.log('Wartość val poza subscribe (nasz return)', val);
+    return val;
   }
 
   id$ = this.comapniesService.getCompaniesInfos().pipe(
     map(res =>
       res.map(res => {
         return res.company_id;
-        mergeAll();
       })
     )
   );
@@ -48,7 +56,7 @@ export class NewDataCompanyFormComponent implements OnInit {
       company_street: ['', { validators: [Validators.required] }],
       company_tax_us_no: ['', { validators: [Validators.required] }],
       company_tax_zus_no: ['', { validators: [Validators.required] }],
-      company_id: this.getID()
+      company_id: ''
     });
   }
 }
