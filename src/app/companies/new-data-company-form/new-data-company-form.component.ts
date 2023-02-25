@@ -27,7 +27,6 @@ export class NewDataCompanyFormComponent implements OnInit {
       .subscribe(id => {
         console.log(id);
         this.form.controls['company_id'].setValue(id);
-        this.form.controls['company_id'].disable();
       });
     //Init form to add the new one of company to database
     this.buildForm();

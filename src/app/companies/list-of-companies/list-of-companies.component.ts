@@ -50,7 +50,7 @@ export class ListOfCompaniesComponent {
 
   //Message that  item data has property deleted from a server and then router to /dashboard
   private onRemoveSuccess() {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/dashboard/CompaniesSummary/listOfCompanies']);
     this.toast.open('Dane zostały usunięte z serwera', '', { panelClass: 'toast-success' });
   }
 
