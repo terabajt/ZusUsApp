@@ -68,4 +68,8 @@ export class CompaniesService {
   removeItem(key: string) {
     return this.db.object(`${this.API_URL_ITEM}/${key}`).remove();
   }
+  //Remove company data from database
+  removeCompany(key: string) {
+    return this.db.object(`${this.API_URL_COMPANIES}/${key}`).remove();
+  }
 }

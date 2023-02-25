@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { NewDataCompanyFormComponent } from '../new-data-company-form/new-data-company-form.component';
 
@@ -13,11 +14,16 @@ export class NewCompanyDetailsComponent implements OnInit {
   @ViewChild('itemForm') itemForm: NewCompanyDetailsComponent;
   form: FormGroup;
 
-  constructor(private companiesService: CompaniesService, private dialogRef: MatDialogRef<NewCompanyDetailsComponent>) {}
+  constructor(
+    private companiesService: CompaniesService,
+    private dialogRef: MatDialogRef<NewCompanyDetailsComponent>,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   createCompanyDetail() {
     this.companiesService.addDetailInfo(this.itemForm.form.value);
+    this.dialogRef.close();
   }
 }

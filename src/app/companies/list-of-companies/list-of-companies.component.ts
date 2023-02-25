@@ -43,10 +43,9 @@ export class ListOfCompaniesComponent {
     // this.dialog.open(ItemDetailsComponent, { data: companyItem.companyItem });
   }
 
-  //Remove item from top menu
-
+  //Remove company from databse
   removeItem(key: string) {
-    // this.companiesService.removeItem(key).then(this.onRemoveSuccess.bind(this), this.onError.bind(this));
+    this.comapniesService.removeCompany(key).then(this.onRemoveSuccess.bind(this), this.onError.bind(this));
   }
 
   //Message that  item data has property deleted from a server and then router to /dashboard
