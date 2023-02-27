@@ -16,7 +16,7 @@ export class NewCompanyItemFormComponent implements OnInit {
   @Input() editMode = false;
 
   constructor(private formBuilder: FormBuilder, private companiesService: CompaniesService, private datePipe: DatePipe) {}
-
+  //Array of month that we can choose in new form item
   month = [
     { label: 'Styczeń', value: 'Styczeń' },
     { label: 'Luty', value: 'Luty' },

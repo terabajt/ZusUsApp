@@ -33,6 +33,7 @@ export class CompaniesTableComponent {
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild('newCompanyItemForm') newCompanyItemForm: NewCompanyItemFormComponent;
 
+  //Row to display on teh mat-table viewer
   displayedColumns: string[] = [
     'LP',
     'billing_date',
@@ -45,6 +46,7 @@ export class CompaniesTableComponent {
     'contex_menu'
   ];
 
+  //Get data of company items and company data to get ID of companies
   companyItems$: Observable<Company_item[]> = this.companiesService.getItemsInfos();
   companiesData$: Observable<Company[]> = this.companiesService.getCompaniesInfos();
 
@@ -61,8 +63,10 @@ export class CompaniesTableComponent {
     })
   );
 
+  //Push data to display into mat-table viewer
   dataSource = this.items$;
 
+  //Showing details of row on mat-table displaying
   showDetails(companyItem) {
     this.dialog.open(ItemDetailsComponent, { data: companyItem.companyItem });
   }
@@ -70,11 +74,9 @@ export class CompaniesTableComponent {
   //Print item to pdf
   printItem(key: string) {
     this.router.navigate(['/dashboard/CompaniesSummary/print', key]);
-    // this.router.navigate(['/dashboard/CompaniesSummary/print']);
   }
 
   //Remove item from top menu
-
   removeItem(key: string) {
     this.companiesService.removeItem(key).then(this.onRemoveSuccess.bind(this), this.onError.bind(this));
   }
@@ -86,19 +88,10 @@ export class CompaniesTableComponent {
   }
 
   //Message that Edit item data has not property sent or remove from-to server
-
   private onError(error) {
     this.toast.open(error.message, '', { panelClass: 'toast-error' });
   }
-
-  // //Load items to edit form
-  // loadItem(key: string) {
-  //   this.companiesService
-  //     .getCompanyItem(key)
-  //     .pipe(tap(item => this.newCompanyItemForm?.setCompanyItem(item)))
-  //     .subscribe(item => (this.item = item));
-  // }
-
+  //Send mail of the item to it's company
   sendMail(mail: string, subject: string, body: string) {
     window.open(`mailto:${mail}?subject=${subject}&body=${body}`);
   }

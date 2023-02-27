@@ -1,9 +1,8 @@
-import { DataSource } from '@angular/cdk/collections';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { map, Observable, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company } from 'src/app/models/company';
 import { NewCompanyDetailsComponent } from '../new-company-details/new-company-details.component';
@@ -18,6 +17,7 @@ export class ListOfCompaniesComponent {
 
   constructor(private comapniesService: CompaniesService, private router: Router, private toast: MatSnackBar, private dialog: MatDialog) {}
 
+  //Row to display on the list of items
   displayedColumns: string[] = [
     'LP',
     'company_name',
@@ -27,18 +27,19 @@ export class ListOfCompaniesComponent {
     'company_street',
     'company_tax_us_no',
     'company_tax_zus_no',
-    'key',
-    'company_id',
     'contex_menu'
   ];
 
+  //Get a companies data from datsabase
   companiesData$: Observable<Company[]> = this.comapniesService.getCompaniesInfos();
 
   // Get data to display
   items$ = this.comapniesService.getCompaniesInfos();
 
+  //Push data of company item to display it on view
   dataSource = this.items$;
 
+  //Todo
   showDetails(companyItem) {
     // this.dialog.open(ItemDetailsComponent, { data: companyItem.companyItem });
   }

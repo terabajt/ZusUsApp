@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { count, filter, firstValueFrom, last, lastValueFrom, map, mergeAll, tap } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
-import { ListOfCompaniesComponent } from '../list-of-companies/list-of-companies.component';
 import { NewCompanyDetailsComponent } from '../new-company-details/new-company-details.component';
 
 @Component({
@@ -12,7 +11,6 @@ import { NewCompanyDetailsComponent } from '../new-company-details/new-company-d
 })
 export class NewDataCompanyFormComponent implements OnInit {
   @ViewChild('itemForm') itemForm: NewCompanyDetailsComponent;
-  // @ViewChild('id') id: ListOfCompaniesComponent;
 
   constructor(private formBuilder: FormBuilder, private comapniesService: CompaniesService) {}
   public form: FormGroup;
@@ -49,7 +47,7 @@ export class NewDataCompanyFormComponent implements OnInit {
       company_street: ['', { validators: [Validators.required] }],
       company_tax_us_no: ['', { validators: [Validators.required] }],
       company_tax_zus_no: ['', { validators: [Validators.required] }],
-      //Company_id is init on ngOnInit
+      //Company_id is init (autoincrement) on ngOnInit
       company_id: ''
     });
   }

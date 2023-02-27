@@ -1,1 +1,1 @@
-.logout-icon{font-size:35px;width:150px;height:auto;cursor:pointer}.user-login{font-size:15px;padding-right:30px}
+.wrapper{display:flex;flex-direction:row-reverse;justify-content:center;width:auto;height:100%;margin:0 auto;background:#fff;box-shadow:6px 6px 20px rgba(0,0,0,.1)}.main-app{width:100%;left:0}.logout-icon{font-size:35px;width:150px;height:auto;cursor:pointer}.user-login{font-size:15px;padding-right:30px}

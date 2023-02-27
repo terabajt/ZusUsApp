@@ -19,6 +19,8 @@ export class NewCompanyItemComponent {
     private toast: MatSnackBar
   ) {}
 
+  //Creat new item company and info about results: succes or fault
+
   createCompanyItem() {
     this.companiesService.addItemInfo(this.itemForm.form.value).then(this.onCreatiingSuccess.bind(this), this.onCreatingFailure.bind(this));
   }

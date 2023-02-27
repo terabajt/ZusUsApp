@@ -36,17 +36,6 @@
       <th mat-header-cell *matHeaderCellDef>Numer konta ZUS </th>
       <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.company_tax_zus_no }}</td>
     </ng-container>
-    <ng-container matColumnDef="key">
-      <th mat-header-cell *matHeaderCellDef>Klucz: </th>
-      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.key }}</td>
-    </ng-container>
-    <ng-container matColumnDef="company_id">
-      <th mat-header-cell *matHeaderCellDef>Numer id: </th>
-      <td mat-cell *matCellDef="let item" (click)="showDetails(item)">{{ item.company_id }}</td>
-    </ng-container>
-
-
-
     <ng-container matColumnDef="contex_menu">
       <th mat-header-cell *matHeaderCellDef>Szybka akcja </th>
       <td mat-cell *matCellDef="let item">
@@ -54,13 +43,9 @@
         <mat-icon (click)="showDetails(item)" id="edit-btn" label="Edytuj">settings</mat-icon>
       </td>
     </ng-container>
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let itemrow; columns: displayedColumns"></tr>
   </table>
-
   <button (click)="openNewCompanyDataModal()" mat-mini-fab color="accent" id="new-item-btn">+</button>
   <app-spinner></app-spinner>
-
 </div>
-<!-- <pre>{{ liczba | async  }}</pre> -->
