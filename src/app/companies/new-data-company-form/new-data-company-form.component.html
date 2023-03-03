@@ -10,8 +10,9 @@
   <div class="row">
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput formControlName="company_email" placeholder="Adres e-mail:">
-        <mat-error>Pole jest wymagane</mat-error>
+        <input matInput formControlName="company_email" placeholder="Adres e-mail:" type="email">
+        <mat-error *ngIf="form.get('company_email').hasError('required')">Pole jest wymagane</mat-error>
+        <mat-error *ngIf="form.get('company_email').hasError('email')">Podaj prawidłowy adres e-mail</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm-4">
@@ -43,6 +44,9 @@
       <mat-form-field>
         <input matInput formControlName="company_tax_zus_no" placeholder="Numer konta ZUS" type="text">
       </mat-form-field>
+      <mat-error *ngIf="form.get('company_tax_zus_no').hasError('required')">Pole jest wymagane</mat-error>
+      <mat-error *ngIf="form.get('company_tax_zus_no').hasError('pattern')">Wprowadź numer konta w formacie 00 0000 0000
+        0000 0000 0000 0000</mat-error>
     </div>
     <div class="col-sm-2">
       <mat-form-field>

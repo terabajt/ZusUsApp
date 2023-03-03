@@ -48,9 +48,9 @@ export class NewDataCompanyFormComponent implements OnInit {
   private buildForm() {
     this.form = this.formBuilder.group({
       company_name: ['', { validators: [Validators.required] }],
-      company_email: ['', { validators: [Validators.required] }],
+      company_email: ['', { validators: [Validators.required, Validators.email] }],
       company_country: ['', { validators: [Validators.required] }],
-      company_post_code: ['', { validators: [Validators.required] }],
+      company_post_code: ['', { validators: [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)] }],
       company_street: ['', { validators: [Validators.required] }],
       company_tax_us_no: ['', { validators: [Validators.required] }],
       company_tax_zus_no: ['', { validators: [Validators.required] }],
