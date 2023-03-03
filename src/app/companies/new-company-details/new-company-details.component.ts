@@ -3,8 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CompaniesService } from 'src/app/core/services/companies.service';
-import { NewDataCompanyFormComponent } from '../new-data-company-form/new-data-company-form.component';
-
 @Component({
   selector: 'app-new-company-details',
   templateUrl: './new-company-details.component.html',

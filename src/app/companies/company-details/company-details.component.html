@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col">
+    <h3>
+      Szczegóły firmy
+      <mat-icon class="float-end" (click)="close()">close</mat-icon>
+    </h3>
+    <p class="label">Nazwa firmy: {{ (company.company_name )}} </p>
+    <p class="label">Adres: {{ company.company_street }} </p>
+    <p class="label">Kod pocztowy: {{ company.company_post_code }} zł</p>
+    <p class="label">Miejscowość: {{ company.company_country}} zł</p>
+    <p class="label">E-mail: {{ company.company_email}} zł</p>
+    <p class="label">Numer bankowy - mikrorachunek Urząd Skarbowy: {{ company.company_tax_us_no }} zł</p>
+    <p class="label">Indyridualny rachunek ZUS {{ company.company_tax_zus_no }} zł</p>
+    <button mat-raised-button color="primary" class="float-end" (click)="goToEditCompanyDetails()">Edytuj wpis</button>
+  </div>
+</div>

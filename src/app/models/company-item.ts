@@ -8,5 +8,5 @@ export interface Company_item {
   billing_vat: number;
   billing_worker: number;
   billing_zus: number;
-  company_id: string;
+  company_id: number;
 }

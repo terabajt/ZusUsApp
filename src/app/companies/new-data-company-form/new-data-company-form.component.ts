@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { count, filter, firstValueFrom, last, lastValueFrom, map, mergeAll, tap } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
+import { Company } from 'src/app/models/company';
 import { NewCompanyDetailsComponent } from '../new-company-details/new-company-details.component';
 
 @Component({
@@ -28,6 +29,12 @@ export class NewDataCompanyFormComponent implements OnInit {
       });
     //Init form to add the new one of company to database
     this.buildForm();
+  }
+  //Set data to form from key param
+  setCompanyData(item: any) {
+    const { key, ...formData } = item;
+    this.form.patchValue(formData);
+    console.log('Poszło?');
   }
   //Return companies id from database to id$
   id$: any = this.comapniesService.getCompaniesInfos().pipe(

@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company } from 'src/app/models/company';
+import { CompanyDetailsComponent } from '../company-details/company-details.component';
+import { ItemDetailsComponent } from '../item-details/item-details.component';
 import { NewCompanyDetailsComponent } from '../new-company-details/new-company-details.component';
 
 @Component({
@@ -40,8 +42,8 @@ export class ListOfCompaniesComponent {
   dataSource = this.items$;
 
   //Todo
-  showDetails(companyItem) {
-    // this.dialog.open(ItemDetailsComponent, { data: companyItem.companyItem });
+  showDetails(companyDetails) {
+    this.dialog.open(CompanyDetailsComponent, { data: companyDetails });
   }
 
   //Remove company from databse

@@ -3,18 +3,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
-import { Company_item } from 'src/app/models/company-item';
-import { NewCompanyItemFormComponent } from '../new-company-item-form/new-company-item-form.component';
+import { Company } from 'src/app/models/company';
+import { NewDataCompanyFormComponent } from '../new-data-company-form/new-data-company-form.component';
 
 @Component({
-  selector: 'app-edit-company-item',
-  templateUrl: './edit-company-item.component.html',
-  styleUrls: ['./edit-company-item.component.scss']
+  selector: 'app-edit-company-data',
+  templateUrl: './edit-company-data.component.html',
+  styleUrls: ['./edit-company-data.component.scss']
 })
-export class EditCompanyItemComponent {
-  @ViewChild('newCompanyItemForm') newCompanyItemForm: NewCompanyItemFormComponent;
+export class EditCompanyDataComponent {
+  @ViewChild('newDataCompanyForm') newDataCompanyForm: NewDataCompanyFormComponent;
 
-  item: Company_item;
+  item: Company;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,24 +29,24 @@ export class EditCompanyItemComponent {
   //Save editing items and inform about succes or error
   saveEditItem() {
     this.companiesService
-      .saveEditItem(this.item.key, this.newCompanyItemForm.form.value)
+      .saveEditCompanyData(this.item.key, this.newDataCompanyForm.form.value)
       .then(this.onEditSuccess.bind(this), this.onError.bind(this));
   }
 
-  //Remove item from server
+  //Remove data company from server
   removeItem() {
-    this.companiesService.removeItem(this.item.key).then(this.onRemoveSuccess.bind(this), this.onError.bind(this));
+    this.companiesService.removeDataCompany(this.item.key).then(this.onRemoveSuccess.bind(this), this.onError.bind(this));
   }
 
   //Message that Edit item data has property sent to a server and then router to /dashboard
   private onEditSuccess() {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/dashboard/CompaniesSummary/listOfCompanies']);
     this.toast.open('Zmiany zostały zapisane na serwerze', '', { panelClass: 'toast-success' });
   }
 
   //Message that  item data has property deleted from a server and then router to /dashboard
   private onRemoveSuccess() {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/dashboard/CompaniesSummary/listOfCompanies']);
     this.toast.open('Dane zostały usunięte z serwera', '', { panelClass: 'toast-success' });
   }
 
@@ -59,14 +59,19 @@ export class EditCompanyItemComponent {
   private loadItem() {
     const key = this.route.snapshot.params['key'];
     this.companiesService
-      .getCompanyItem(key)
-      .pipe(tap(item => this.newCompanyItemForm?.setCompanyItem(item)))
+      .getCompanyData(key)
+      .pipe(
+        tap(item => {
+          console.log(item);
+          this.newDataCompanyForm?.setCompanyData(item);
+        })
+      )
       .subscribe(item => (this.item = item));
   }
 
   //Close form
   formClose() {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/dashboard/CompaniesSummary/listOfCompanies']);
   }
   //Reset form to original state
   formReset() {

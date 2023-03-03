@@ -32,12 +32,6 @@ export class CompaniesService {
       .pipe(map(response => response.map(item => this.assignKey(item))));
   }
 
-  // async getLastItem(): Promise<any> {
-  //   const collectionRef = this.db.list<Company>(this.API_URL_COMPANIES).collection('companies');
-  //   const snapshot = await collectionRef.count().get();
-  //   console.log(snapshot.data().count);
-  // }
-
   //Get Item to form to edit
   getCompanyItem(key: string): Observable<Company_item> {
     return this.db
@@ -45,10 +39,22 @@ export class CompaniesService {
       .snapshotChanges()
       .pipe(map(item => this.assignKey(item)));
   }
+  //Get Company Data to form to edit
+  getCompanyData(key: string): Observable<Company> {
+    return this.db
+      .object<Company>(`${this.API_URL_COMPANIES}/${key}`)
+      .snapshotChanges()
+      .pipe(map(item => this.assignKey(item)));
+  }
 
   //Push data item of edit form to server
-  saveEditFlight(key: string, item: Company_item) {
-    return this.db.object<Company_item>(`${this.API_URL_ITEM}/${key}`).update(item);
+  saveEditItem(key: string, item: Company) {
+    return this.db.object<Company>(`${this.API_URL_COMPANIES}/${key}`).update(item);
+  }
+
+  //Push company data from edit  to database
+  saveEditCompanyData(key: string, item: Company) {
+    return this.db.object<Company>(`${this.API_URL_COMPANIES}/${key}`).update(item);
   }
   //Push data item to server
 
@@ -67,6 +73,10 @@ export class CompaniesService {
   //Remove item from database
   removeItem(key: string) {
     return this.db.object(`${this.API_URL_ITEM}/${key}`).remove();
+  }
+  //Remove data company from database
+  removeDataCompany(key: string) {
+    return this.db.object(`${this.API_URL_COMPANIES}/${key}`).remove();
   }
   //Remove company data from database
   removeCompany(key: string) {

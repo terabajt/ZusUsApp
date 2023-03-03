@@ -24,6 +24,8 @@ import { PdfCreateComponent } from './pdf-create/pdf-create.component';
 import { NewCompanyDetailsComponent } from './new-company-details/new-company-details.component';
 import { ListOfCompaniesComponent } from './list-of-companies/list-of-companies.component';
 import { NewDataCompanyFormComponent } from './new-data-company-form/new-data-company-form.component';
+import { CompanyDetailsComponent } from './company-details/company-details.component';
+import { EditCompanyDataComponent } from './edit-company-data/edit-company-data.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { NewDataCompanyFormComponent } from './new-data-company-form/new-data-co
     PdfCreateComponent,
     NewCompanyDetailsComponent,
     ListOfCompaniesComponent,
-    NewDataCompanyFormComponent
+    NewDataCompanyFormComponent,
+    CompanyDetailsComponent,
+    EditCompanyDataComponent
   ],
   exports: [CompaniesSummaryComponent],
   imports: [
