@@ -26,11 +26,14 @@
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="company_post_code" placeholder="Kod pocztowy" type="text">
+        <mat-error *ngIf="form.get('company_post_code').hasError('pattern')">Wpisz wartość w formacie
+          XX-XXX.</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="company_street" placeholder="Ulica:" type="text">
+        <mat-error>Pole jest wymagane</mat-error>
       </mat-form-field>
     </div>
   </div>
@@ -38,17 +41,24 @@
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="company_tax_us_no" placeholder="Numer konta Urząd Skarbowy" type="text">
+        <mat-error *ngIf="form.get('company_tax_us_no').hasError('required')">Pole jest wymagane</mat-error>
+        <mat-error *ngIf="form.get('company_tax_us_no').hasError('pattern')">Numer konta musi zawierć 26 cyfr pisane
+          ciągiem. Musisz
+          podać jeszcze
+          {{26 - form.get('company_tax_us_no').value.length}} cyfr. </mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="company_tax_zus_no" placeholder="Numer konta ZUS" type="text">
+        <mat-error *ngIf="form.get('company_tax_zus_no').hasError('required')">Pole jest wymagane</mat-error>
+        <mat-error *ngIf="form.get('company_tax_zus_no').hasError('pattern')">Numer konta musi zawierć 26
+          cyfr pisane ciągiem. Musisz
+          podać jeszcze
+          {{26 - form.get('company_tax_zus_no').value.length}} cyfr.</mat-error>
       </mat-form-field>
-      <mat-error *ngIf="form.get('company_tax_zus_no').hasError('required')">Pole jest wymagane</mat-error>
-      <mat-error *ngIf="form.get('company_tax_zus_no').hasError('pattern')">Wprowadź numer konta w formacie 00 0000 0000
-        0000 0000 0000 0000</mat-error>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-8">
       <mat-form-field>
         <input matInput formControlName="company_id" placeholder="Numer ID" type="number" readonly>
       </mat-form-field>

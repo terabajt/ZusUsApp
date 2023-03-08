@@ -20,7 +20,7 @@
         <mat-datepicker #billing_date></mat-datepicker>
         <mat-error>Pole jest wymagane</mat-error> -->
         <input matInput formControlName="billing_date" placeholder="Data wprowadzenia" type="text">
-        <mat-error>Pole jest wymagane</mat-error>
+        <mat-error *ngIf="form.get('billing_date').hasError('pattern')">Podaj datę w formacie DD-MM-RRRR</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm-4">

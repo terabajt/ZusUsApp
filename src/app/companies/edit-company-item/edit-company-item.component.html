@@ -1,15 +1,16 @@
-<div class="row">
-  <div class="col-9">
-    <h3>Edycja wpisu <strong>{{ item?.key }}</strong></h3>
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <h3>Edycja wpisu <strong>{{ item?.key }}</strong></h3>
+    </div>
   </div>
-</div>
-<app-new-company-item-form #newCompanyItemForm [editMode]="true"> </app-new-company-item-form>
-<div class="row">
-  <div class="col text-end">
-    <mat-icon (click)="removeItem()" id="remove-btn">delete_forever</mat-icon>
-    <button mat-raised-button (click)="formClose()">Zamknij</button>
-    <button mat-raised-button (click)="formReset()">RESET</button>
-    <button mat-raised-button color="primary" (click)="saveEditItem()">ZAPISZ</button>
+  <app-new-company-item-form #newCompanyItemForm [editMode]="true"> </app-new-company-item-form>
+  <div class="row">
+    <div class="col-8 text-end">
+      <mat-icon (click)="removeItem()" id="remove-btn">delete_forever</mat-icon>
+      <button mat-raised-button (click)="formClose()">Zamknij</button>
+      <button mat-raised-button (click)="formReset()">RESET</button>
+      <button mat-raised-button color="primary" (click)="saveEditItem()">ZAPISZ</button>
+    </div>
   </div>
-
 </div>

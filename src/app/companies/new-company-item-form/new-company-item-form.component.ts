@@ -44,11 +44,11 @@ export class NewCompanyItemFormComponent implements OnInit {
 
   date = new Date();
 
-  currentDate = this.datePipe.transform(this.date, 'dd.MM.yyy');
+  currentDate = this.datePipe.transform(this.date, 'dd-MM-yyy');
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      billing_date: [this.currentDate, { validators: [Validators.required] }],
+      billing_date: [this.currentDate, { validators: [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])-[0-9]{2}-[0-9]{4}/)] }],
       billing_month: ['', { validators: [Validators.required] }],
       billing_us: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],
       billing_vat: ['', { validators: [Validators.required, Validators.pattern('[1-9]*')] }],

@@ -50,10 +50,10 @@ export class NewDataCompanyFormComponent implements OnInit {
       company_name: ['', { validators: [Validators.required] }],
       company_email: ['', { validators: [Validators.required, Validators.email] }],
       company_country: ['', { validators: [Validators.required] }],
-      company_post_code: ['', { validators: [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)] }],
+      company_post_code: ['', { validators: [Validators.required, Validators.pattern(/(\d{2}-\d{3}$)/gm)] }],
       company_street: ['', { validators: [Validators.required] }],
-      company_tax_us_no: ['', { validators: [Validators.required] }],
-      company_tax_zus_no: ['', { validators: [Validators.required] }],
+      company_tax_us_no: ['', { validators: [Validators.required, Validators.pattern(/^(\d{26,26})$/gm)] }],
+      company_tax_zus_no: ['', { validators: [Validators.required, Validators.pattern(/^(\d{26,26})$/gm)] }],
       //Company_id is init (autoincrement) on ngOnInit
       company_id: ''
     });
