@@ -1,6 +1,11 @@
 <div class="container">
-  <h2>Wygenerowane zestawienia:</h2>
+  <h2>Lista firm:</h2>
   <table class="table" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filtruj po..." #input>
+    </mat-form-field>
+
     <ng-container matColumnDef="LP">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>L.p. </th>
       <td class="td" mat-cell *matCellDef="let element; let i = index">

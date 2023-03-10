@@ -26,7 +26,6 @@ import { ListOfCompaniesComponent } from './list-of-companies/list-of-companies.
 import { NewDataCompanyFormComponent } from './new-data-company-form/new-data-company-form.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { EditCompanyDataComponent } from './edit-company-data/edit-company-data.component';
-
 @NgModule({
   declarations: [
     CompaniesSummaryComponent,

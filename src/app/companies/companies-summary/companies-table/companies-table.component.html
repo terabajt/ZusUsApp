@@ -1,7 +1,15 @@
 <div class="container">
+  <div class="col-sm-8 filter">
+    <mat-form-field>
+      <mat-select formControlName="company_id" placeholder="Filtruj po: Nazwa Firmy">
+        <mat-option *ngFor="let x of (companiesData$ | async)" [value]="x.company_id">{{ x.company_name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
   <h2>Wygenerowane zestawienia:</h2>
   <table class="table" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
 
     <ng-container matColumnDef="LP">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>L.p. </th>
@@ -60,4 +68,3 @@
   </table>
   <!-- <mat-paginator #paginator [pageSize]="2" [pageSizeOptions]="[2, 5, 10, 25, 100]">
   </mat-paginator> -->
-</div>

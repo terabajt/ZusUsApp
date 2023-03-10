@@ -3,13 +3,13 @@
 <div class=" page" id="htmlData">
   <table class="table table-bordered">
     <tr class="table-primary" *ngFor="let item of (items2$ |async)">
-      <h1 class="text-center">DO ZAPLATY ZA {{ item.companyItem.billing_month }}</h1>
-      <h2 class="text-center">Data naliczenia oplaty: {{ item.companyItem.billing_date }}</h2>
+      <h1 class="text-center">DO ZAPŁATY ZA {{ item.companyItem.billing_month }}</h1>
+      <h2 class="text-center">Data naliczenia opłaty: {{ item.companyItem.billing_date }}</h2>
       <p class="text-start"> {{ item.companyData.company_name }}</p>
       <p class="text-start">{{ item.companyData.company_street }}</p>
       <p class="text-start"> {{ item.companyData.company_post_code + ' ' + item.companyData.company_country }}</p>
 
-      <h2 class="text-center">Urzad skarbowy:</h2>
+      <h2 class="text-center">Urząd skarbowy:</h2>
       <p class="text-center">Numer konta do przelewu: {{ item.companyData.company_tax_us_no }}</p>
       <p class="text-center">Podatek za pracownika: {{ item.companyItem.billing_worker }} zł</p>
       <p class="text-center">Podatek dochodowy: {{ item.companyItem.billing_us}} zł</p>

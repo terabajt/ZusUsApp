@@ -6,7 +6,6 @@ import { map, Observable, tap } from 'rxjs';
 import { CompaniesService } from 'src/app/core/services/companies.service';
 import { Company } from 'src/app/models/company';
 import { CompanyDetailsComponent } from '../company-details/company-details.component';
-import { ItemDetailsComponent } from '../item-details/item-details.component';
 import { NewCompanyDetailsComponent } from '../new-company-details/new-company-details.component';
 
 @Component({
@@ -65,6 +64,8 @@ export class ListOfCompaniesComponent {
       }
     });
   }
+
+  applyFilter(e) {}
 
   //Message that  item data has property deleted from a server and then router to /dashboard
   private onRemoveSuccess() {
